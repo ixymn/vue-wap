@@ -1,8 +1,8 @@
 {
   "name": "vue-wap",
   "version": "1.0.0",
-  "description": "Kilimall wap 3.0",
-  "author": "bobye <bob.ye@kilimall.com>",
+  "description": "wap 3.0",
+  "author": "ixymn <ixymn0@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
