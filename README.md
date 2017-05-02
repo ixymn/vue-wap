@@ -1,6 +1,6 @@
 # vue-wap
 
-> Kilimall wap 3.0
+> wap 
 
 ## Build Setup
 
