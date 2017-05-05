@@ -4,7 +4,19 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// font icon plugin
+import Icon from 'vue-awesome/components/Icon.vue'
+import 'vue-awesome/icons/cart-plus'
+
+
+
+// flexible
+import './static/flexible_css.js'
+import './static/flexible.js'
+
 Vue.config.productionTip = false
+//register  icon component
+Vue.component('icon', Icon)
 
 /* eslint-disable no-new */
 new Vue({

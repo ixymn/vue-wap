@@ -1,25 +1,23 @@
 <template>
-  <header class="head">
+  <div class="footer">
     Header
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'footer',
   data () {
     return {
-      msg: 'Header'
+      msg: 'footer'
     }
   }
 }
 </script>
-<style scoped>
+<style >
 header {
-  position:fixed;
-  top:0;
   text-align:center;
-  height:3rem;
+  height:2rem;
 }
 
 </style>
