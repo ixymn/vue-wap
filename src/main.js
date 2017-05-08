@@ -6,7 +6,6 @@ import router from './router'
 
 // font icon plugin
 import Icon from 'vue-awesome/components/Icon.vue'
-import 'vue-awesome/icons/cart-plus'
 
 
 
