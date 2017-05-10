@@ -29,11 +29,6 @@
         },
         updated(){
           this.initSwiper();
-        },
-        watch:{
-          listImg: function(v){
-            this.initSwiper()
-          }
         }
     }
 </script>

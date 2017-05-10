@@ -1,15 +1,16 @@
 <template>
   <div class="hello">
-    <Header />
+    <HEADE />
+    <HOMETAB />
     <div class="main-container">
       <app-banner :listImg="listImg"></app-banner>
     </div>
-
   </div>
 </template>
 
 <script>
 import Header from '../components/header.vue'
+import hometab from '../components/hometab.vue'
 import Slide from '../components/slide.vue'
 export default {
   name: 'index',
@@ -31,12 +32,12 @@ export default {
     },result=>{
         // alert('连接失败');
     });
-    console.log(imagesSlide);
     this.listImg = imagesSlide;
   },
 
   components:{
-    Header,
+    "HOMETAB": hometab,
+    "HEADE":Header,
     "app-banner":Slide
   }
 }
