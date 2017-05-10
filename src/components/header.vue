@@ -1,25 +1,20 @@
 <template>
   <header class='head'>
     <i class='site-logo'>KILIMALL</i>
-    <span class='search-bar' ><label class="search-icon"> <icon name="icon-search" class="icon" ></icon></label><input class='search-input' type='text' name='search' value=""></span>
+    <div class='search-bar' ><label class="search-icon"> <icon name="icon-search" class="icon" ></icon></label><input class='search-input' type='text' name='search' value=""></div>
 
-    <icon name='cart-plus' class='shop-cart'></icon>
-    <icon name='icon-menu' class='shop-cart'></icon>
+    <div><icon name='cart-plus' class='shop-cart'></icon></div>
+    <div class="header-menu">
+      <div class="icon" v-on:click='showMenu'>
+      <icon name='icon-menu' class='shop-cart' ></icon>
+      </div>
+      <div class="drop-menu" v-show="menuShow"></div>
+    </div>
   </header>
 </template>
-
-<script>
-import '../assets/icons';
-export default {
-  name: 'header',
-  data () {
-    return {
-      msg: 'Header'
-    }
-  }
-}
-</script>
 <style lang="less">
+.header-menu {position: relative;}
+.drop-menu {width: 2rem;position: absolute;height: 4rem;z-index: 999;background: red;}
 .shop-cart {width: .61rem;height: .61rem;color: #fff;}
 i { font-style:normal;display:inline-block;}
 .head {
@@ -30,6 +25,7 @@ i { font-style:normal;display:inline-block;}
   box-sizing: border-box;
   padding: 0 .42rem;
   top:0;
+  z-index: 2;
   height:1.56rem;
   width: 100%;
   background: #424040;
@@ -40,5 +36,20 @@ i { font-style:normal;display:inline-block;}
   }
   .search-input{border: none;border-radius: 0 5px 5px 0;height: .61rem;margin-left: -2px;}
 }
-
 </style>
+<script>
+import '../assets/icons';
+export default {
+  name: 'header',
+  data () {
+    return {
+      menuShow : false,
+    }
+  },   // end data
+  methods: {
+    showMenu :function(event){
+      this.menuShow = !this.menuShow;
+    },
+  }
+}
+</script>

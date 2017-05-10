@@ -11,21 +11,30 @@
 <script>
 import Header from '../components/header.vue'
 import Slide from '../components/slide.vue'
-import a from '../static/banner1.jpg'
-import b from '../static/banner2.jpg'
-import c from '../static/banner3.jpg'
-
 export default {
   name: 'index',
   data () {
     return {
       listImg: [
-        {url: a},
-        {url: b},
-        {url: c}
+        //{url: ""},
       ]
     }
   },
+  created:function(){
+    var url = 'http://mobile.kilimall.co.ke/index.php?act=index_new&op=index';
+    let imagesSlide=[];
+    this.$http.get(url).then(result=>{
+        let adv_list = result.data.datas.adv_list;
+        for ( let [index,item] of adv_list.entries()) {
+          imagesSlide.push({"url":item.image})
+        }
+    },result=>{
+        // alert('连接失败');
+    });
+    console.log(imagesSlide);
+    this.listImg = imagesSlide;
+  },
+
   components:{
     Header,
     "app-banner":Slide
@@ -35,6 +44,5 @@ export default {
 
 <style scoped>
 
-#imageUploader { display: none;}
 .upload-label { display: block;width: 1.33rem;height: 1.33rem;background: red;}
 </style>

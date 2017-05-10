@@ -12,18 +12,28 @@
     import 'swiper/dist/css/swiper.min.css';
     export default {
         props: ['listImg'],
-        mounted() {
-            console.log('mounted', this)
-            var swiper = new Swiper('.swiper-container', {
+
+        methods:{
+          initSwiper:function(){
+            let swiper = new Swiper('.swiper-container', {
                 pagination: '.swiper-pagination',
                 paginationClickable: true,
                 loop: true,
-                speed: 600,
+                speed: 400,
                 autoplay: 4000,
                 onTouchEnd: function() {
                     swiper.startAutoplay()
                 }
             });
+          }
+        },
+        updated(){
+          this.initSwiper();
+        },
+        watch:{
+          listImg: function(v){
+            this.initSwiper()
+          }
         }
     }
 </script>
