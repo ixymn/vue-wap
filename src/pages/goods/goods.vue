@@ -1,15 +1,16 @@
 <template>
-  <div class="usercenter-page">
-
+  <div>
+    fdsfdfsdfsd
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'usercenter'
+  name: 'goods',
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
