@@ -1,0 +1,1 @@
+export const STORE_HOME_INFO = 'STORE_HOME_INFO'

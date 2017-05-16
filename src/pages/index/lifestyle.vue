@@ -1,6 +1,6 @@
 <template>
   <div class="lifestyle-page">
-
+fsfsdfdfdsfdsfsf
   </div>
 </template>
 

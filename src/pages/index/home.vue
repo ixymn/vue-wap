@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="home-page"   >
     <div class="main-container">
       <slide-banner :listImg="listImg"></slide-banner>
     </div>
@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
 import Slide from '../../components/slide.vue'
 
 export default {
@@ -18,21 +19,34 @@ export default {
       ]
     }
   },
-  created:function(){
-    var url = 'http://mobile.kilimall.co.ke/index.php?act=index_new&op=index';
-    let imagesSlide=[];
-    this.$http.get(url).then(result=>{
-        let adv_list = result.data.datas.adv_list;
-        for ( let [index,item] of adv_list.entries()) {
-          imagesSlide.push({"url":item.image})
-        }
-    },result=>{
-        // alert('连接失败');
-    });
-    this.listImg = imagesSlide;
+  methods:{
+
+  },
+  computed: {
+    ...mapState([
+       'home_page'
+    ])
   },
   components:{
     "slide-banner":Slide
+  },
+  mounted(){
+    let imagesSlide=[];
+    let adv_list = this.home_page.datas.adv_list;
+    for ( let [index,item] of adv_list.entries()) {
+      imagesSlide.push({"url":item.image})
+    }
+    this.listImg = imagesSlide
+  },
+  watch:{
+    home_page:function(v,o){
+      let imagesSlide=[];
+      let adv_list = this.home_page.datas.adv_list;
+      for ( let [index,item] of adv_list.entries()) {
+        imagesSlide.push({"url":item.image})
+      }
+      this.listImg = imagesSlide
+    }
   }
 }
 </script>

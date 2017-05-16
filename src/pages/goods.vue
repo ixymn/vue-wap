@@ -1,12 +1,12 @@
 <template>
-  <div class="usercenter-page">
-sdfdsfdsfdsfs
+  <div class="lifestyle-page">
+ fdsfdffsf
   </div>
 </template>
 
 <script>
 export default {
-  name: 'usercenter'
+  name: 'goods'
 }
 </script>
 

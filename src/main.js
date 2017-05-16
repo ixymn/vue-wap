@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/'
 Vue.config.productionTip = false
 // font icon plugin
 import Icon from 'vue-awesome/components/Icon.vue'
@@ -22,6 +23,7 @@ Vue.component('icon', Icon)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
