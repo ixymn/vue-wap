@@ -29,7 +29,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 1.56rem;
   min-height: 5rem;
 }
 .router-fade-enter-active, .router-fade-leave-active {
