@@ -1,17 +1,22 @@
 <template>
-    <div class="swiper-container">
+<div style="position:relative">
+    <div class="swiper-container" :style="gdsBannerStyle">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="str in listImg" :style="{ backgroundImage: 'url(' + str.url + ')' }"></div>
+            <div class="swiper-slide" v-for="str in listImg" :style="[{ backgroundImage: 'url(' + str.url + ')' },gdsBannerItemStyle]"></div>
         </div>
+        
         <div class="swiper-pagination swiper-pagination-white"></div>
+
     </div>
+    <slot name="swiper-icons"></slot>
+</div>
 </template>
 
 <script>
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.min.css';
     export default {
-        props: ['listImg'],
+        props: ['listImg',"gdsBannerStyle","gdsBannerItemStyle"],
 
         methods:{
           initSwiper:function(){
@@ -44,6 +49,7 @@
         .swiper-slide {
             background-position: center;
             background-size: cover;
+            background-repeat: no-repeat;
             width: 100%;
             height: 100%;
             img {
@@ -56,6 +62,9 @@
             height: 0.14rem;
             display: inline-block;
             background: #7c5e53;
+        }
+        .swiper-pagination-white .swiper-pagination-bullet{
+            background:#999;
         }
     }
 </style>
