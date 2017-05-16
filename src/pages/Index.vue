@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style >
+.hello {margin-top: 1.56rem;}
 .home-tab {height: 1.11rem;}
 .v-link {display: block;}
 .tab {display: flex;justify-content: space-around;align-items: center;height: 100%;}
