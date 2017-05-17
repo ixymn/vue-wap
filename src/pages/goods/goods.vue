@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import {getGoodsData} from '../../service/getData'
+
 import Header from '../../components/common/headerBack.vue'
 import Footer from '../../components/common/buyFooter.vue'
 import Spec from '../../components/goods/goodsSpec.vue'
@@ -69,6 +71,19 @@ export default {
       goodsInfo:{},
   	});
   },
+  methods:{
+    async initData(){
+      let res = await getGoodsData("27494");
+      this.goodsInfo = res.datas.goods_info;
+      let goods_list = res.datas.goods_image;
+      let imagesSlide=[];
+      for ( let [index,item] of goods_list.entries()){
+        imagesSlide.push({"url":item.medium_image})
+      }
+      this.listImg = imagesSlide;
+    },
+
+  },
   components:{
   	"HEADE":Header,
     "BANNER":Slide,
@@ -77,21 +92,8 @@ export default {
     "FEEDBACK":Feedback,
     "SPECFICTION":Specfiction,
   },
-  created:function(){
-    var url = 'http://mobile.kilimall.co.ke/index.php?act=goods&op=new_goods_detail&goods_id=27494';
-    let imagesSlide=[];
-    this.$http.get(url).then(result=>{
-      
-        let goods_list = result.data.datas.goods_image;
-        for ( let [index,item] of goods_list.entries()){
-          imagesSlide.push({"url":item.medium_image})
-        }
-        this.goodsInfo = result.data.datas.goods_info;
-
-    },result=>{
-        // alert('连接失败');
-    });
-    this.listImg = imagesSlide;
+  mounted:function(){
+    this.initData();
   }
 }
 </script>
