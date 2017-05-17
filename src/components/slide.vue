@@ -29,6 +29,9 @@
             });
           }
         },
+        created(){
+          this.initSwiper();
+        },
         updated(){
           this.initSwiper();
         }

@@ -82,6 +82,9 @@ export default {
       }
       this.listImg = imagesSlide;
     },
+    add:function(){
+      
+    }
 
   },
   components:{
@@ -114,12 +117,12 @@ export default {
   .share-icons1{
     width: 0.78rem;
     height: 0.78rem;
-  } 
+  }
   .share-icons2{
     width: 0.78rem;
     height: 0.78rem;
     margin-top: 0.56rem;
-  } 
+  }
 }
 
 .goods-brief{
@@ -137,7 +140,7 @@ export default {
   padding: 0.28rem 0;
   font-size: 0.5rem;
   color: #E4C187;
-  
+
 }
 .goods-price>span:nth-child(1){
   float: left;
@@ -180,7 +183,7 @@ export default {
   width:48%;
 }
 .goods-express>div:nth-child(2){
-  border-left:0.03rem solid #DDDFE4; 
+  border-left:0.03rem solid #DDDFE4;
 }
 .goods-express>div>em{
   display: inline-block;

@@ -27,7 +27,6 @@
   </div>
 </template>
 <style lang="less">
-.index {margin-top: 1.56rem;}
 .home-tab {height: 1.11rem;}
 .v-link {display: block;}
 .tab {

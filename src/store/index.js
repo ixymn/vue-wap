@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   home_page:{},
+  cartGoods:0
 }
 
 export default new Vuex.Store({
