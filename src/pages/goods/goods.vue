@@ -36,7 +36,7 @@
         <FEEDBACK />
       </div>
       <div class="goods-specfiction">
-        
+        <SPECFICTION />
       </div>
     </div>
     <FOOTER />
@@ -48,6 +48,7 @@ import Header from '../../components/common/headerBack.vue'
 import Footer from '../../components/common/buyFooter.vue'
 import Spec from '../../components/goods/goodsSpec.vue'
 import Feedback from '../../components/goods/goodsFeedback.vue'
+import Specfiction from '../../components/goods/goodsSpecfiction.vue'
 import Slide from '../../components/slide.vue'
 
 export default {
@@ -61,7 +62,7 @@ export default {
         height:"7.0rem",
       },
       gdsBannerItemStyle:{
-        backgroundSize:"contain",
+        //backgroundSize:"contain",
       },//banner的特例样式
   		name:"Detail",
       listImg:[],
@@ -74,6 +75,7 @@ export default {
     "FOOTER":Footer,
     "SPEC":Spec,
     "FEEDBACK":Feedback,
+    "SPECFICTION":Specfiction,
   },
   created:function(){
     var url = 'http://mobile.kilimall.co.ke/index.php?act=goods&op=new_goods_detail&goods_id=27494';
@@ -133,12 +135,16 @@ export default {
   padding: 0.28rem 0;
   font-size: 0.5rem;
   color: #E4C187;
-  line-height: 0.56rem;
+  
 }
 .goods-price>span:nth-child(1){
+  float: left;
   display: inline-block;
   overflow: hidden;
-  width: 50%;
+  max-width: 50%;
+  height: 0.56rem;
+  line-height: 0.56rem;
+  word-break: normal;
 }
 .goods-price>span:nth-child(2){
   display: inline-block;
@@ -191,5 +197,8 @@ export default {
 }
 .goods-express-ico3{
   background-image:url(../../assets/images/goods-delivery.png);
+}
+.goods-specfiction{
+  margin-top:0.28rem;
 }
 </style>

@@ -16,7 +16,7 @@
   height: 1.11rem;
   padding:0.22rem 0.28rem;
   background-color: white;
-  box-shadow: 0 -0.06rem 0.22rem 0 rgba(0,0,0,0.11), inset 0 0 0 0 #DDDFE4;
+  box-shadow:0 0 0.22rem 0 rgba(0, 0, 0, 0.11);
   .buy_btn{
     width: 5.69rem;
     height: 1.11rem;
