@@ -11,5 +11,5 @@ export {
 	baseUrl,
 //	routerMode,
 	imgBaseUrl,
-  apiUrl
+  	apiUrl,
 }

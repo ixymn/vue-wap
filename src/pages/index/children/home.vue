@@ -8,7 +8,7 @@
 
 <script>
 import {mapState, mapGetters} from 'vuex'
-import Slide from '../../components/slide.vue'
+import Slide from '../../../components/slide.vue'
 
 
 export default {
