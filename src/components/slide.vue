@@ -2,11 +2,9 @@
 <div style="position:relative">
     <div class="swiper-container" :style="gdsBannerStyle">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="str in listImg" :style="[{ backgroundImage: 'url(' + str.url + ')' },gdsBannerItemStyle]"></div>
+            <div class="swiper-slide" v-for="str in listImg" :style="[{ backgroundImage: 'url(' + str.image + ')' },gdsBannerItemStyle]"></div>
         </div>
-        
         <div class="swiper-pagination swiper-pagination-white"></div>
-
     </div>
     <slot name="swiper-icons"></slot>
 </div>
@@ -17,7 +15,6 @@
     import 'swiper/dist/css/swiper.min.css';
     export default {
         props: ['listImg',"gdsBannerStyle","gdsBannerItemStyle"],
-
         methods:{
           initSwiper:function(){
             let swiper = new Swiper('.swiper-container', {
