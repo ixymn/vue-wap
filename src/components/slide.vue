@@ -58,8 +58,8 @@
             }
         }
         .swiper-pagination-bullet {
-            width:0.14rem;
-            height: 0.14rem;
+            width:0.3rem;
+            height: 0.3rem;
             display: inline-block;
             background: #7c5e53;
         }

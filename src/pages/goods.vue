@@ -1,12 +1,12 @@
 <template>
   <div class="lifestyle-page">
-
+ fdsfdffsf
   </div>
 </template>
 
 <script>
 export default {
-  name: 'lifestyle'
+  name: 'goods'
 }
 </script>
 
