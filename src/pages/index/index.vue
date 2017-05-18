@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+    <!-- <HEADE> -->
     <HEADE />
     <div class="home-tab">
       <ul class="tab">
@@ -13,7 +14,7 @@
             <i class='lifestyle' ></i>
           </router-link>
         </li>
-        <li  >
+        <li>
           <router-link to="usercenter" class="v-link">
             <i class="usercenter"></i>
           </router-link>
@@ -45,6 +46,10 @@
 
 .router-slid-enter-active, .router-slid-leave-active {transition: all .4s;}
 .router-slid-enter, .router-slid-leave-active {transform: translate3d(2rem, 0, 0);opacity: 0;}
+
+
+
+
 </style>
 
 <script>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/pages/index/index'
 import App from '../App'
-
+ 
 const home = r => require.ensure([], () => r(require('../pages/index/children/home')), 'home')
 const lifestyle = r => require.ensure([], () => r(require('../pages/index/children/lifestyle')), 'lifestyle')
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
