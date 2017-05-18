@@ -14,6 +14,23 @@
         <li>Blue</li>
       </ul>
     </div>
+    <div class="popup-spec-item">
+      <div>Color Choices</div>
+      <ul class="clearfix">
+        <li>Blue</li>
+        <li>Blue</li>
+        <li>Blue</li>
+        <li>Blue</li>
+      </ul>
+    </div>
+    <div class="popup-spec-item clearfix">
+      <div style="display:inline-block;float:left;">PCS.</div>
+      <dl style="display:inline-block;float:right;">
+        <dd class="popup-good-pcs">-</dd>
+        <dd >1</dd>
+        <dd class="popup-good-pcs">+</dd>
+      </dl>
+    </div>
     <div class="popup-addcart-btn">
       Add To Cart
     </div>
@@ -24,7 +41,7 @@
     width: 100%;
     box-sizing: border-box;
     min-height: 7rem;
-    padding: 0 0.83rem 0.42rem 0.83rem;
+    padding: 0 0.83rem 2.22rem 0.83rem;
     position: relative;
     .popup-title{
       height: 1.39rem;
@@ -70,6 +87,26 @@
         color: #150000;
         letter-spacing: 0.01rem;
         line-height: 0.39rem;
+        
+      }
+      dl{
+        dd{
+          display: inline-block;
+          line-height: 0.94rem;
+        }
+        dd:nth-child(2){
+          font-size: 0.44rem;
+          margin: 0 0.28rem;
+        }
+        dd.popup-good-pcs{
+          font-size: 0.72rem;
+          width: 0.94rem;
+          height: 0.94rem;
+          box-sizing: border-box;
+          border-radius: 0.06rem;
+          color: #eff0f3;
+          border: 0.03rem solid #eff0f3;
+        }
       }
       ul{
         li{

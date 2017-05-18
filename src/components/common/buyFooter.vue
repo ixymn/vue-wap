@@ -4,7 +4,7 @@
     <div class="buy-ico cart">
       <em class="cart-band">99</em>
     </div>
-    <div class="buy_btn">Buy</div>
+    <div class="buy_btn" @click="popupSpecEvent">Buy</div>
   </footer>
 </template>
 <style lang="less">
@@ -70,7 +70,9 @@ export default {
   },
   props:[],
   methods: {
-   
+   popupSpecEvent:function(){
+      this.$emit('popupSpecEvent');
+    },
   }
 }
 </script>

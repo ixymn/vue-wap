@@ -7,6 +7,8 @@ const home = r => require.ensure([], () => r(require('../pages/index/children/ho
 const lifestyle = r => require.ensure([], () => r(require('../pages/index/children/lifestyle')), 'lifestyle')
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
+const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
+
 
 Vue.use(Router)
 
@@ -34,6 +36,10 @@ export default new Router({
     {
       path: '/goods',
       component: goods,
+    },
+    {
+      path: '/goodsDetail',
+      component:goodsDetail,
     }
   ]
 })
