@@ -18,7 +18,7 @@
         <div class="goods-descr">Duis sollicitudin hendrerit magna eu dictum.</div>
       </div>
       <div class="goods-spec">
-        <SPEC v-for="item in goodsInfo.spec" :specItem="item"/>
+        <SPEC v-for="item in goodsInfo.spec" :specItem="item" @popupSpecEvent="popupSpec"></SPEC>
       </div>
 
       <div class="goods-express">
@@ -38,8 +38,14 @@
       <div class="goods-specfiction">
         <SPECFICTION />
       </div>
+      <div class="goods-like">
+        <LIKE />
+      </div>
     </div>
     <FOOTER />
+    <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
+      <POPUP :goodsInfo="goodsInfo"/>
+    </mt-popup>
   </div>
 </template>
 
@@ -51,6 +57,8 @@ import Footer from '../../components/common/buyFooter.vue'
 import Spec from '../../components/goods/goodsSpec.vue'
 import Feedback from '../../components/goods/goodsFeedback.vue'
 import Specfiction from '../../components/goods/goodsSpecfiction.vue'
+import Like from '../../components/goods/goodsLike.vue'
+import Popup from '../../components/goods/popupSpec.vue'
 import Slide from '../../components/slide.vue'
 
 export default {
@@ -69,10 +77,11 @@ export default {
   		name:"Detail",
       listImg:[],
       goodsInfo:{},
+      popupVisible:false,
   	});
   },
   methods:{
-    async initData(){
+    initData:async function(){
       let res = await getGoodsData("27494");
       this.goodsInfo = res.datas.goods_info;
       let goods_list = res.datas.goods_image;
@@ -82,7 +91,9 @@ export default {
       }
       this.listImg = imagesSlide;
     },
-
+    popupSpec:function(){
+      this.popupVisible=true;
+    },
   },
   components:{
   	"HEADE":Header,
@@ -91,6 +102,8 @@ export default {
     "SPEC":Spec,
     "FEEDBACK":Feedback,
     "SPECFICTION":Specfiction,
+    "LIKE":Like,
+    "POPUP":Popup,
   },
   mounted:function(){
     this.initData();
@@ -202,5 +215,8 @@ export default {
 }
 .goods-specfiction{
   margin-top:0.28rem;
+}
+.goods-like{
+  margin-top: 0.28rem;
 }
 </style>

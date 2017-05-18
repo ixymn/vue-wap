@@ -1,5 +1,5 @@
 <template>
-  <div class="spec-item">
+  <div class="spec-item" @click="popupSpecEvent">
       <div class="spec-name">{{specItem.spec_name}}</div>
       <div class="spec-select">
         {{specItem.spec_value}}
@@ -47,12 +47,16 @@
 </style>
 <script>
 export default {
-  name: 'goodsSpec',
   data: function(){
     return {
 
     }
   },
-  props:["specItem"]
+  props:["specItem"],
+  methods:{
+    popupSpecEvent:function(){
+      this.$emit('popupSpecEvent');
+    },
+  }
 }
 </script>
