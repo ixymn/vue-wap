@@ -14,35 +14,26 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: App,
+      component:index,
+      redirect:"/home",
       children: [
         {
-          path:'',
-          redirect:"/home"
+          path:'/home',
+          component:home
         },
         {
-          path:'/index',
-          component:index,
-          children:[
-            {
-              path:'/home',
-              component:home
-            },
-            {
-              path:'/lifestyle',
-              component:lifestyle
-            },
-            {
-              path:'/usercenter',
-              component:usercenter
-            }
-          ]
+          path:'/lifestyle',
+          component:lifestyle
         },
         {
-          path: '/goods',
-          component: goods,
+          path:'/usercenter',
+          component:usercenter
         }
       ]
+    },
+    {
+      path: '/goods',
+      component: goods,
     }
   ]
 })
