@@ -3,7 +3,7 @@
     <transition name="router-fade" mode="out-in">
       <router-view></router-view>
     </transition>
-
+ 
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top: 1.56rem;
   min-height: 5rem;
 }
 .router-fade-enter-active, .router-fade-leave-active {

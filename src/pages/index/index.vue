@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+    <!-- <HEADE> -->
     <HEADE />
     <div class="home-tab">
       <ul class="tab">
@@ -13,7 +14,7 @@
             <i class='lifestyle' ></i>
           </router-link>
         </li>
-        <li  >
+        <li>
           <router-link to="usercenter" class="v-link">
             <i class="usercenter"></i>
           </router-link>
@@ -27,7 +28,6 @@
   </div>
 </template>
 <style lang="less">
-.index {margin-top: 1.56rem;}
 .home-tab {height: 1.11rem;}
 .v-link {display: block;}
 .tab {
@@ -45,12 +45,14 @@
 
 .router-slid-enter-active, .router-slid-leave-active {transition: all .4s;}
 .router-slid-enter, .router-slid-leave-active {transform: translate3d(2rem, 0, 0);opacity: 0;}
+
+
+
+
 </style>
 
 <script>
 import {mapState, mapMutations} from 'vuex'
-import {getIndexData} from '../../service/getData'
-
 import Header from '../../components/header.vue'
 
 export default {
@@ -60,25 +62,12 @@ export default {
   },
   data(){
     return {
-
     }
   },
   methods:{
-    ...mapMutations([
-      'STORE_HOME_INFO'
-    ]),
-    async initData(){
-      let res = await getIndexData();
-      this.STORE_HOME_INFO(res);
-    }
+
   },
-  computed: {
-    ...mapState([
-       'home_page'
-    ])
-  },
-  mounted(){
-    this.initData();
+  created(){
   }
 }
 </script>
