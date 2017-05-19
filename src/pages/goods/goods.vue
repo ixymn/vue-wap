@@ -1,6 +1,6 @@
 <template>
   <div class="goods-box">
-    <HEADE :headTitle="name" :gdsHeaderStyle="headStyle"/>
+    <HEADE :gdsHeaderStyle="headStyle"/>
     <div class="goods-main">
       <div class="goods-img">
         <BANNER :listImg="listImg" :gdsBannerStyle="gdsBannerStyle" :gdsBannerItemStyle="gdsBannerItemStyle">
@@ -42,7 +42,7 @@
         <LIKE />
       </div>
     </div>
-    <FOOTER />
+    <FOOTER @popupSpecEvent="popupSpec"/>
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
       <POPUP :goodsInfo="goodsInfo"/>
     </mt-popup>
@@ -82,12 +82,12 @@ export default {
   },
   methods:{
     initData:async function(){
-      let res = await getGoodsData("27494");
+      let res = await getGoodsData("15676");
       this.goodsInfo = res.datas.goods_info;
       let goods_list = res.datas.goods_image;
       let imagesSlide=[];
       for ( let [index,item] of goods_list.entries()){
-        imagesSlide.push({"url":item.medium_image})
+        imagesSlide.push({"image":item.medium_image,"type":"","data":""})
       }
       this.listImg = imagesSlide;
     },

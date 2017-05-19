@@ -2,6 +2,7 @@
   <header class='head-back' :style="gdsHeaderStyle">
     <div class="header-ico"><icon name='icon-goback' class='shop-cart'></icon></div>
     <div class="header-title"><span>{{headTitle}}</span></div>
+    
   </header>
 </template>
 <style lang="less">
