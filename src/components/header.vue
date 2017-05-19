@@ -7,9 +7,8 @@
     </div>
     <div class="header-cart">
       <i class='icon icon-cart'>
-        <span class="cart-goods">3</span>
+        <span class="cart-goods" v-bind:class="showCartGoodsNum" >{{this.cartGoods}}</span>
       </i>
-
     </div>
     <div class="header-menu">
       <div  v-on:click='showMenu'>
@@ -18,25 +17,19 @@
       <div class="drop-menu" v-show="menuShow" >
         <ul v-on:click='showMenu'>
             <li class="menu-home">
-              <router-link to="home" class="v-link" >Home
-              </router-link>
-              </li>
+              <router-link to="home" class="v-link" >Home</router-link>
+            </li>
             <li class="menu-deal">
-              <router-link to="usercenter" class="v-link" >Today's Deal
-              </router-link>
-              </li>
+              <router-link to="usercenter" class="v-link" >Today's Deal</router-link>
+            </li>
             <li class="menu-life">
-              <router-link to="lifestyle" class="v-link" >Lifestyle
-              </router-link>
-
+              <router-link to="lifestyle" class="v-link" >Lifestyle</router-link>
             </li>
             <li class="menu-order">
-              <router-link to="usercenter" class="v-link" >Orders
-              </router-link>
+              <router-link to="usercenter" class="v-link" >Orders</router-link>
             </li>
             <li class="menu-message">
-              <router-link to="lifestyle" class="v-link" >Message
-              </router-link>
+              <router-link to="lifestyle" class="v-link" >Message</router-link>
             </li>
         </ul>
       </div>
@@ -44,6 +37,8 @@
   </header>
 </template>
 <style lang="less">
+.show{visibility:visible;}
+.hide{visibility: hidden;}
 .header-menu {position: relative;}
 .drop-menu { min-width: 4.25rem; position: absolute; min-height:5.74rem; z-index: 999; background:#2C2B2B; color: #fff;right: 0;top: 1.2rem;
   &:before {
@@ -65,8 +60,6 @@
   .menu-life {background-image: url(../assets/header/icon_lifestyle.png);}
   .menu-order {background-image: url(../assets/header/icon_orders.png);}
   .menu-message {background-image: url(../assets/header/icon_message.png);}
-
-
 }
 .shop-cart {width: .61rem;height: .61rem;color: #fff;}
 i { font-style:normal;}
@@ -81,13 +74,16 @@ i { font-style:normal;}
       height: .61rem;
       background-image: url(../assets/header/icon_cart.png);
       .cart-goods{
-        display: inline-block;
-        width: .38rem;
-        height: .38rem;
+        display: flex;
+        justify-content: center;
+        width: .4rem;
+        height: .4rem;
+        line-height: .44rem;
         border-radius: 50%;
         background-color: #F87622;
         color: #fff;
-        position: absolute;top:-.1rem;right:-.16rem;
+        position: absolute;top:-.12rem;right:-.19rem;
+        border: 2px solid #424040;
       }
     }
   }
@@ -110,15 +106,26 @@ i { font-style:normal;}
 }
 </style>
 <script>
+import {mapState } from 'vuex'
+
 import '../assets/icons';
 export default {
   name: 'header',
   data () {
     return {
       menuShow : false,
-      cartGoods: 0,
+      cartGoodsNum: 0,
     }
   },   // end data
+  computed:{
+    ...mapState([
+       'cartGoods'
+    ]),
+    showCartGoodsNum:function(){
+      return  (this.cartGoods==0?"hide":"show")
+    }
+  },
+
   methods: {
     showMenu :function(event){
       this.menuShow = !this.menuShow;

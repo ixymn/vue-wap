@@ -18,7 +18,7 @@
         <div class="goods-descr">Duis sollicitudin hendrerit magna eu dictum.</div>
       </div>
       <div class="goods-spec">
-        <SPEC v-for="item in goodsInfo.spec" :specItem="item"/>
+        <SPEC v-for="(item,key) in goodsInfo.spec"  :key="key" :specItem="item"/>
       </div>
 
       <div class="goods-express">
