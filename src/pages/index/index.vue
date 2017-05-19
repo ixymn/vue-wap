@@ -28,7 +28,6 @@
   </div>
 </template>
 <style lang="less">
-.index {margin-top: 1.56rem;}
 .home-tab {height: 1.11rem;}
 .v-link {display: block;}
 .tab {
@@ -54,8 +53,6 @@
 
 <script>
 import {mapState, mapMutations} from 'vuex'
-import {getIndexData} from '../../service/getData'
-
 import Header from '../../components/header.vue'
 
 export default {
@@ -65,25 +62,12 @@ export default {
   },
   data(){
     return {
-
     }
   },
   methods:{
-    ...mapMutations([
-      'STORE_HOME_INFO'
-    ]),
-    async initData(){
-      let res = await getIndexData();
-      this.STORE_HOME_INFO(res);
-    }
+
   },
-  computed: {
-    ...mapState([
-       'home_page'
-    ])
-  },
-  mounted(){
-    this.initData();
+  created(){
   }
 }
 </script>
