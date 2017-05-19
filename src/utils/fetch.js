@@ -70,7 +70,7 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 						}
 						resolve(obj)
 					} else {
-						reject(requestObj)
+						reject('Not found')
 					}
 				}
 			}
