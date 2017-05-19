@@ -44,7 +44,7 @@
     </div>
     <FOOTER @popupSpecEvent="popupSpec"/>
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-      <POPUP :goodsInfo="goodsInfo"/>
+      <POPUP :goodsInfo="goodsInfo" @asyncFreshEvent="asyncFresh"/>
     </mt-popup>
   </div>
 </template>
@@ -75,25 +75,47 @@ export default {
         //backgroundSize:"contain",
       },//banner的特例样式
   		name:"Detail",
+      goodsId:87597,
       listImg:[],
       goodsInfo:{},
       popupVisible:false,
+      spec_list:{},
   	});
   },
   methods:{
     initData:async function(){
-      let res = await getGoodsData("15676");
+      let res = await getGoodsData("66476");
       this.goodsInfo = res.datas.goods_info;
       let goods_list = res.datas.goods_image;
       let imagesSlide=[];
       for ( let [index,item] of goods_list.entries()){
         imagesSlide.push({"image":item.medium_image,"type":"","data":""})
       }
+      this.spec_list = res.datas.spec_list;
       this.listImg = imagesSlide;
     },
     popupSpec:function(){
       this.popupVisible=true;
     },
+    asyncFresh:async function(str){
+      for(let item in this.spec_list){
+        if(item == str){
+          this.goodsId=this.spec_list[item];
+          break;
+        }
+      }
+      let res = await getGoodsData(this.goodsId);
+      this.goodsInfo = res.datas.goods_info;
+      let goods_list = res.datas.goods_image;
+      let imagesSlide=[];
+      for ( let [index,item] of goods_list.entries()){
+        imagesSlide.push({"image":item.medium_image,"type":"","data":""})
+      }
+      this.spec_list = res.datas.spec_list;
+      this.listImg = imagesSlide;
+      console.log(res.datas.goods_info.goods_spec);
+      console.log(res.datas.goods_info.goods_storage);
+    }
   },
   components:{
   	"HEADE":Header,
@@ -136,12 +158,15 @@ export default {
 }
 
 .goods-brief{
+
   padding:0.42rem 0.28rem;
   text-align: left;
   border-bottom: 0.03rem solid #eff0f3;
+  font-family: DroidSans;
   background-color: #fff;
 }
 .goods-name{
+
     font-size: 0.44rem;
     color: #150000;
     line-height: 0.5rem;
@@ -165,7 +190,7 @@ export default {
   display: inline-block;
   padding-left: 0.56rem;
   margin-left: 0.72rem;
-  border-left: solid #C4C8D2;
+  border-left: 1px solid #C4C8D2;
   font-size: 0.33rem;
   color: #9B9B9B;
   line-height: 0.33rem;

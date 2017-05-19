@@ -2,7 +2,7 @@ import {
 	baseUrl,apiUrl
 } from '../config/env'
 
-export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
+export default async(type = 'GET', url = '', data = {}, method = 'fetch',body = 'json') => {
 	type = type.toUpperCase();
 	url = apiUrl + url;
 
@@ -38,7 +38,12 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 
 		try {
 			var response = await fetch(url, requestConfig);
-			var responseJson = await response.json();
+			if(body == "json"){
+				var responseJson = await response.json();
+			}else if(body == "text"){
+				var responseJson = await response.text();
+			}
+			
 		} catch (error) {
 			throw new Error(error)
 		}
@@ -65,7 +70,7 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 				if (requestObj.readyState == 4) {
 					if (requestObj.status == 200) {
 						let obj = requestObj.response
-						if (typeof obj !== 'object') {
+						if (typeof obj !== 'object' && body == 'json') {
 							obj = JSON.parse(obj);
 						}
 						resolve(obj)

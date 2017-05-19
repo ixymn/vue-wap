@@ -44,11 +44,12 @@
     background-image: url(../../assets/images/cart.png);
     .cart-band{
       position: absolute;
+      font-size: 0.33rem;
       top: -0.22rem;
       right: -0.5rem;
       display: inline-block;
       width: 0.72rem;
-      height: 0.44rem;
+      
       background: #F87622;
       border-radius: 0.28rem;
       border:0.06rem solid white;
@@ -56,6 +57,7 @@
       letter-spacing: 0.03rem;
       line-height:  0.44rem;
       text-align: center;
+      box-sizing: border-box;
     }
   }
 }
