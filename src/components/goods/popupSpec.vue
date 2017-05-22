@@ -1,34 +1,24 @@
 <template>
   <div class="popup-spec">
     <div class="popup-title">
-      <div class="goods-image"></div>
+      <div class="goods-image"><img :src="goodsInfo.goods_image" /></div>
       <div class="goods-info"><span>Ksh 2,239</span> <span>In Stock</span></div>
     </div>
-
-    <div class="popup-spec-item">
-      <div>Color Choices</div>
-      <ul class="clearfix">
-        <li>Blue</li>
-        <li>Blue</li>
-        <li>Blue</li>
-        <li>Blue</li>
-      </ul>
-    </div>
-    <div class="popup-spec-item">
-      <div>Color Choices</div>
-      <ul class="clearfix">
-        <li>Blue</li>
-        <li>Blue</li>
-        <li>Blue</li>
-        <li>Blue</li>
-      </ul>
-    </div>
+    <template v-for="(item,index) in goodsInfo.spec_name">
+      <div class="popup-spec-item">
+      <div>{{item.spec_name}}</div>
+        <ul class="clearfix">
+          <li v-for="(item1,index1) in goodsInfo.spec_value[item.spec_value]" :class="{focus: index1 == specInfo[item.spec_value]}" :test="specInfo[1]"  @click="focusSpec(item.spec_value,index1)">{{item1}}</li>
+        </ul>
+      </div>
+    </template>
+    
     <div class="popup-spec-item clearfix">
       <div style="display:inline-block;float:left;">PCS.</div>
       <dl style="display:inline-block;float:right;">
-        <dd class="popup-good-pcs">-</dd>
-        <dd >1</dd>
-        <dd class="popup-good-pcs">+</dd>
+        <dd class="popup-good-pcs" @click="minusPCS">-</dd>
+        <dd>{{pcs}}</dd>
+        <dd class="popup-good-pcs" @click="plusPCS">+</dd>
       </dl>
     </div>
     <div class="popup-addcart-btn">
@@ -36,6 +26,41 @@
     </div>
   </div>
 </template>
+<script>
+  export default {
+    data: function(){
+      return {
+        specInfo:{},
+        pcs:1,
+        
+      }
+    },
+    props:['goodsInfo'],
+    methods:{
+      focusSpec:function(index,index1){
+        this.specInfo[index]=index1;
+        this.specInfo = Object.assign({},this.specInfo);
+
+        let goodsIdArr=[];
+        for(let key in this.specInfo){
+          goodsIdArr.push(this.specInfo[key]);
+        }
+        this.$emit('asyncFreshEvent',goodsIdArr.join("|"));
+
+      },
+      plusPCS:function(){
+        if(this.pcs < this.goodsInfo.goods_storage){
+          this.pcs++;
+        }
+      },
+      minusPCS:function(){
+        if(this.pcs > 1 ){
+          this.pcs--;
+        }
+      }
+    },
+  }
+</script>
 <style lang="less">
   .popup-spec{
     width: 100%;
@@ -56,6 +81,9 @@
         background-position: center center;
         float: left;
         background-color: red;
+        img{
+          width: 100%;
+        }
       }
       .goods-info{
         width: 60%;
@@ -92,6 +120,7 @@
       dl{
         dd{
           display: inline-block;
+          float: left;
           line-height: 0.94rem;
         }
         dd:nth-child(2){
@@ -99,6 +128,7 @@
           margin: 0 0.28rem;
         }
         dd.popup-good-pcs{
+
           font-size: 0.72rem;
           width: 0.94rem;
           height: 0.94rem;
@@ -111,12 +141,15 @@
       ul{
         li{
           font-size: 0.33rem;
-          padding: 0.22rem 0.42rem;
+          padding: 0.28rem 0.28rem;
           display: inline-block;
           float: left;
           margin-right: 0.33rem;
           margin-top: 0.42rem;
-          border: 0.03rem solid #eff0f3;
+          border: 1px solid #eff0f3;
+        }
+        li.focus{
+            border-color:#F87622;
         }
       }
     }
@@ -136,13 +169,4 @@
     }
   }
 </style>
-<script>
-export default {
-  data: function(){
-    return {
 
-    }
-  },
-  props:['goodsInfo'],
-}
-</script>

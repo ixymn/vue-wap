@@ -14,10 +14,9 @@
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.min.css';
     export default {
-        props: ['listImgs',"gdsBannerStyle","gdsBannerItemStyle"],
+        props: ['listImg',"gdsBannerStyle","gdsBannerItemStyle"],
         data(){
           return{
-            listImg:[]
           }
         },
         methods:{
@@ -39,11 +38,6 @@
         },
         updated(){
           this.initSwiper();
-        },
-        computed:{
-          listImg:function(){
-            return this.props.listImgs
-          }
         }
     }
 </script>

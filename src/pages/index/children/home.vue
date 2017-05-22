@@ -1,15 +1,7 @@
 <template>
   <div class="home-page"   >
     <div class="main-container">
-      <div class="home-slides" style="position:relative">
-          <div class="swiper-container" >
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="str in listImg" :style="{ backgroundImage: 'url('+ str.image + ')' }"></div>
-              </div>
-              <div class="swiper-pagination swiper-pagination-white"></div>
-          </div>
-          <slot name="swiper-icons"></slot>
-      </div>
+      <slide-banner :listImg="listImg"></slide-banner>
       <flash-sales :flashList="flashList" class="flash-module"/>
     </div>
   </div>
@@ -21,6 +13,7 @@ import 'swiper/dist/css/swiper.min.css'
 import {mapState, mapMutations} from 'vuex'
 import {getIndexData,getFlashData} from '../../../service/getData'
 
+import Slide from '../../../components/slide.vue'
 import flash_sales from '../../../components/index/flash_sales.vue'
 export default {
   name: 'home',
@@ -32,18 +25,6 @@ export default {
     }
   },
   methods:{
-    ...mapMutations([
-      'STORE_HOME_INFO','FLASH_SALE'
-    ]),
-    async initData(){
-      if(this.home_page.code == undefined){
-        let res = await getIndexData();
-        this.STORE_HOME_INFO(res);
-        this.loadSlide();
-      }
-      let flash = await getFlashData();
-      this.FLASH_SALE(flash);
-    },
     loadSlide:function(){
       let imagesSlide=[];
       if(this.home_page.code != undefined){
@@ -52,26 +33,11 @@ export default {
           imagesSlide.push({"image":item.image,'type':item.type,'data':item.data})
         }
         this.listImg = imagesSlide
-        this.initSwiper();
       }
     },
     loadFlash:function(){
 
     },
-    initSwiper:function(){
-      let swiper = new Swiper('.swiper-container', {
-          pagination: '.swiper-pagination',
-          paginationClickable: true,
-          loop: true,
-          speed: 400,
-          autoplay: 4000,
-          onTouchEnd: function() {
-              swiper.startAutoplay()
-          }
-      });
-    }
-
-
   },
   computed: {
     ...mapState([
@@ -85,13 +51,25 @@ export default {
     }
   },
   components:{
+    "slide-banner":Slide,
     "flash-sales":flash_sales
   },
   created(){
-    this.initData()
+    this.loadSlide()
+
   },
   mounted(){
-    this.loadSlide();
+    this.loadSlide()
+  },
+  watch:{
+    home_page:function(v,o){
+      let imagesSlide=[];
+      let adv_list = this.home_page.datas.adv_list;
+      for ( let [index,item] of adv_list.entries()) {
+        imagesSlide.push({"image":item.image,'type':item.type,'data':item.data})
+      }
+      this.listImg = imagesSlide
+    }
   }
 }
 </script>

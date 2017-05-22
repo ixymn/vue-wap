@@ -13,13 +13,14 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 .42rem;
   top:0;
   z-index: 2;
   height:1.33rem;
   width: 100%;
   background: #424040;
-  .header-ico {}
+  .header-ico {
+    margin-left: 0.28rem;
+  }
   .header-title { 
     position: absolute;
     height:1.33rem;

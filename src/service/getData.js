@@ -8,10 +8,13 @@ var getFlashData = () => fetch('GET','/index.php?act=flash_goods',{});
 var getGoodsData = (goodsid) => fetch('GET','/index.php?act=goods&op=new_goods_detail&goods_id='+goodsid,{});
 //获取goods评论
 var getGoodsComment = (goodsid,curpage) => fetch('GET','/index.php?act=goods&op=goods_evaluate&goods_id='+goodsid+"&curpage="+curpage+"&page=10");
+//获取goods详细HTML
+var getGoodsHtml = (goodsid) => fetch('GET','/index.php?act=goods&op=goods_body&goods_id='+goodsid,{},'fetch','text');
 
 export {
 	getIndexData,
   getFlashData,
 	getGoodsData,
 	getGoodsComment,
+    getGoodsHtml,
 }
