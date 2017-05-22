@@ -28,7 +28,10 @@
   </div>
 </template>
 <style lang="less">
-.home-tab {height: 1.11rem;}
+.home-tab{
+    height: 1.11rem;
+    margin-top: 1.56rem;
+}
 .v-link {display: block;}
 .tab {
   display: flex;justify-content: space-around;align-items: center;height: 100%;

@@ -9,6 +9,7 @@ const usercenter = r => require.ensure([], () => r(require('../pages/index/child
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
 const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/index/children/lifestyleDetail')), 'lifestyleDetail')
+const newShare = r => require.ensure([], () => r(require('../pages/index/children/newShare')), 'newShare')
 
 
 Vue.use(Router)
@@ -45,6 +46,10 @@ export default new Router({
     {
       path: '/lifestyleDetail',
       component:lifestyleDetail,
+    },
+    {
+      path: '/newShare',
+      component:newShare,
     }
   ]
 })

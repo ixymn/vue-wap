@@ -43,75 +43,90 @@ export default {
 </script>
 <template>
 <div class="lifestyle-page">
-<mt-loadmore :top-method="loadTop" ref="loadmore">
 
-	<div class="topicTtile">TOPIC</div>
+	<router-link to='newShare' class="v-link">
+		<div class="newShare"></div>
+	</router-link>
 
-	<div class="swipeChangeWrapper">
-		<div class="swipeChange">
-			<ul class="content">
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-			</ul>
-		</div>
-	</div>
+	<mt-loadmore :top-method="loadTop" ref="loadmore">
 
-	<div class="titleGroupWrapper">
-		<div class="titleGroupChange">
-			<ul class="titleGroup clearfix">
-				<li @click="titleClick(titles)" v-for="titles in titleGroup" :class="{active:titles.active}"><span>{{titles.titleName}}</span></li>
-			</ul>
-		</div>
-	</div>
+		<div class="topicTtile">TOPIC</div>
 
-	<ul class="ShareList">
-		<li v-for="Share in ShareList">
-			<div class="ShareBody">
-				<div class="infoHead">
-					<div class="infoLeft">
-						<div class="profileP">
-							<img src="../../../assets/images/profile.png" alt="">
-						</div>
-						<div class="SharerName">Garons</div>
-						<div class="ShareTime">5 mins ago</div>
-					</div>
-					<div class="infoRight">+Follow</div>
-				</div>
-				<router-link to='lifestyleDetail' class="v-link">
-					<div class="infoBody">
-						<img src="../../../assets/images/profile.png" alt="">
-						<p class="articleT">A nice weekend</p>
-						<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
-					</div>
-          		</router-link>
+		<div class="swipeChangeWrapper">
+			<div class="swipeChange">
+				<ul class="content">
+					<li>
+						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+					</li>
+					<li>
+						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+					</li>
+					<li>
+						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+					</li>
+				</ul>
 			</div>
-			<ul class="infFooter clearfix">
-				<li class="Igolook"><i></i>233</li>
-				<li class="Icollect"><i></i>233</li>
-				<li class="Ishare"><i></i>Share</li>
-			</ul>
-		</li>
-	</ul>
+		</div>
 
-</mt-loadmore>
-      <router-view></router-view>
+		<div class="titleGroupWrapper">
+			<div class="titleGroupChange">
+				<ul class="titleGroup clearfix">
+					<li @click="titleClick(titles)" v-for="titles in titleGroup" :class="{active:titles.active}"><span>{{titles.titleName}}</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<ul class="ShareList">
+			<li v-for="Share in ShareList">
+				<div class="ShareBody">
+					<div class="infoHead">
+						<div class="infoLeft">
+							<div class="profileP">
+								<img src="../../../assets/images/lifeStyle/1.png" alt="">
+							</div>
+							<div class="SharerName">Garons</div>
+							<div class="ShareTime">5 mins ago</div>
+						</div>
+						<div class="infoRight">+Follow</div>
+					</div>
+					<router-link to='lifestyleDetail' class="v-link">
+						<div class="infoBody">
+							<img src="../../../assets/images/lifeStyle/1.png" alt="">
+							<p class="articleT">A nice weekend</p>
+							<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
+						</div>
+	          		</router-link>
+				</div>
+				<ul class="infFooter clearfix">
+					<li class="Igolook"><i></i>233</li>
+					<li class="Icollect"><i></i>233</li>
+					<li class="Ishare"><i></i>Share</li>
+				</ul>
+			</li>
+		</ul>
+
+	</mt-loadmore>
+<router-view></router-view>
 
 </div>
 </template>
 
-<style lang="less">
-.ShareList{
-	li{
-		background:#fff;
-		margin-top: 0.278rem;
-	}
+<style lang="less" scoped>
+.newShare{
+	width:44px;
+	height:44px;
+	position:fixed;
+	right:0.361rem;
+	bottom:1.111rem;
+	background:url(../../../assets/images/lifestyle/newShare.png);
+	background-size: contain;
+	// border-radius: 50%;
+	// background:#f87622;
+	z-index: 99;
+}
+.ShareList>li{
+	background:#fff;
+	margin-top: 0.278rem;
 }
 .infoHead{
 	height:60px;
@@ -173,8 +188,8 @@ export default {
 }
 .infFooter{
 	li{
-		height:1.111rem;
-		line-height: 1.111rem;
+		height:1rem;
+		line-height: 1rem;
 		width:33.3%;
 		float:left;
 		text-align: center;
@@ -204,6 +219,9 @@ export default {
 .infoBody{
 	background: #f3f5f9;
 	padding-bottom: 0.278rem;
+	img{
+		width:100%;
+	}
 }
 .ShareBody{
 	padding:0 0.278rem;

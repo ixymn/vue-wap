@@ -1,32 +1,147 @@
 <script>
 export default {
 	name: 'AAAAAA',
-	created:function(){
-		alert(99)
+	data:function(){
+		return{
+			OtherLists:[0,1]
+		}
 	}
 
 }
 </script>
 <template>
-<div id="aaaaaaaaaaaaaaaaaaaa">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
+<div>
+
+	<div class="ShareWrapper">
+		<div class="ShareBody">
+			<div class="infoHead">
+				<div class="infoLeft">
+					<p class="articleT">A nice weekend</p>
+					<p>
+						<div class="ShareTime">5 mins ago</div>
+						<div class="SharerName">Garons</div>
+					</p>
+				</div>
+				<div class="infoRight">+Follow</div>
+			</div>
+			<div class="infoBody">
+				<div class="articleBody">
+					<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
+					<img class="infoBodyImg" src="../../../assets/images/lifeStyle/1.png" alt="">
+					<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
+				</div>
+				<div class="goodsBuyNow">
+					<div class="goodsPicWrapper">
+						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+					</div>
+					<p class="goodsTitle">Mikita sunglasses Farfetch</p>
+					<p class="goodsPrice">
+						<span>Ksh</span>
+						<span>4,490</span>
+					</p>
+					<div class="clickBuyNow">Buy Now</div>
+				</div>
+			</div>
+		</div>
+		<ul class="infFooter clearfix">
+			<li class="Igolook"><i></i>233</li>
+			<li class="Icollect"><i></i>233</li>
+			<li class="Ishare"><i></i>Share</li>
+		</ul>
+	</div>
+	<div class="relatedShare">RELATED SHARE</div>
+	<ul class="OtherLists">
+		<li v-for="other in OtherLists">
+			<img src="../../../assets/images/lifeStyle/1.png" alt="">
+			<p class="articleT2">A nice weekend</p>
+			<p class="articleB2">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
+		</li>
+	</ul>
+</div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
+.OtherLists{
+	background:#FFF;
+	li{
+		padding:0.278rem;
+		border-bottom: 1px solid #f3f4f6;
+		.articleT2{
+			font-size: 16px;
+			font-weight: bold;
+			color:#000;
+			margin:2px 0 3px 0;
+		}
+		.articleB2{
+			color:#999999;
+		}
+	}
+}
+.relatedShare{
+	height:1.111rem;
+	line-height: 1.111rem;
+	font-size: 16px;
+	font-weight: bold;
+	color:#150000;
+	padding:0 0.278rem; 
+}
+.ShareWrapper{
+	background: #fff;
+}
+.articleBody{
+	padding-bottom: 0.278rem;
+}
+.goodsTitle{
+	margin:0.278rem 0 0 2.778rem;
+	font-size: 14px;
+	color:#7E7E7E;
+}
+.goodsPrice{
+	font-size: 14px;
+	color:#7E7E7E;
+	margin:0.1rem 0 0 2.778rem;
+
+}
+.goodsBuyNow{
+	height:80px;
+	padding-top: 1px;
+	position:relative;
+	background:#f9fafc;
+}
+.clickBuyNow{
+	border: 1px solid #E4C187;
+	color:#E4C187;
+	position: absolute;
+	top:1.111rem;
+	right:0.282rem;
+	width:2.033rem;
+	line-height: 0.611rem;
+	height:0.611rem;
+	text-align: center;
+}
+.goodsPicWrapper{
+	width:90px;
+	height:80px;
+	position:absolute;
+	left:0;
+	top:0;
+	img{
+		height:100%;
+	}
+}
+.infoLeft{
+	padding-top: 1px;
+}
 .ShareList{
 	li{
 		background:#fff;
-		margin-top: 0.278rem;
 	}
 }
 .infoHead{
-	height:60px;
+	padding-left: 0.42rem;
+	height:80px;
 	position:relative;
-}
-.infoLeft{
-	width:124px;
-	height:60px;
-	position:absolute;
-	left:0;
+	border-bottom:1px solid #f3f4f6;
 }
 .infoRight{
 	width:2.097rem;
@@ -41,45 +156,31 @@ export default {
 	font-size: 13px;
 
 }
-.profileP{
-	width:40px;
-	height:40px;
-	border-radius: 50%;
-	overflow:hidden;
-	position:absolute;
-	left:10px;
-	top:10px;
-	img{
-		width:100%;
-	}
-}
 .SharerName{
-	position:absolute;
-	left:58px;
-	top:10px;
 	color:#000;
 	font-size: 14px;
+	float:left;
+	margin-left: 9px;
 }
 .ShareTime{
-	position:absolute;
-	left:58px;
-	top:30px;
+	font-size: 14px;
+	float:left;
 	color:#999999;
-
 }
 .articleT{
-	font-size: 16px;
+	margin: 14px 0 8px;
+	font-size: 19px;
 	font-weight: bold;
 	color:#000;
-	margin:2px 0 3px 0;
 }
 .articleB{
-	color:#999999;
+	color:#150000;
+	font-size: 14px;
 }
 .infFooter{
 	li{
-		height:1.111rem;
-		line-height: 1.111rem;
+		height:1.0rem;
+		line-height: 1.0rem;
 		width:33.3%;
 		float:left;
 		text-align: center;
@@ -107,11 +208,11 @@ export default {
 	}
 }
 .infoBody{
-	background: #f3f5f9;
-	padding-bottom: 0.278rem;
-}
-.ShareBody{
 	padding:0 0.278rem;
+	background: #fff;
+}
+.infoBodyImg{
+	width:100%;
 }
 .swipeChange{
 	position: relative;
@@ -183,14 +284,14 @@ export default {
 		}
 	}
 }
-.titleGroup{
-
-}
 .LifeDetail{
 	width:100vw;
 	height:100vh;
 	background:#FFF;
 }
-
+.addGoods{
+  height: 10rem;
+  background: red;
+}
 
 </style>
