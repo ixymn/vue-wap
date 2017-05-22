@@ -8,9 +8,9 @@
         <li :class="{'focus':(tabIndex == 3)}" @click="linkTab(3)">Help</li>
       </ul>
       <div class="detail-con">
-        <FEEDBACK v-show="tabIndex == 1"/>
-        <DETAIL v-show="tabIndex == 2"/>
-        <HELP v-show="tabIndex == 3" v-for="item in helpList" :helpItem="item"></HELP>
+        <FEEDBACK v-if="tabIndex == 1"/>
+        <DETAIL v-else-if="tabIndex == 2"/>
+        <HELP v-else="tabIndex == 3" v-for="item in helpList" :helpItem="item"></HELP>
       </div>
     </div>
   </div>
@@ -30,10 +30,12 @@ export default {
       name:"Product Detail",
       tabIndex:1,
       helpList:[],
+      goodsId:'',
     })
   },
   mounted:function(){
     this.helpList=keHelp.Q;
+    this.goodsId=this.$route.params.goodsid;
   },
   components:{
     "HEADER":Header,
@@ -44,6 +46,7 @@ export default {
   methods:{
     linkTab:function(index){
       this.tabIndex=index;
+      
     }
   },
 }

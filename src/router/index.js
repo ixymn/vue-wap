@@ -34,11 +34,11 @@ export default new Router({
       ]
     },
     {
-      path: '/goods',
+      path: '/goods/:goodsid',
       component: goods,
     },
     {
-      path: '/goodsDetail',
+      path: '/goodsDetail/:goodsid',
       component:goodsDetail,
     }
   ]

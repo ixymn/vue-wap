@@ -2,41 +2,15 @@
   <div style="background-color:white;padding:0.42rem 0;">
     <div class="like-title">You may also like</div>
     <ul class="like-goods clearfix">
-      <li>
-        <a href="product_detail.html?goods_id=391289">
-          <div class="like-goods-pic">
+      <li v-for="item in likeList">
+
+        <router-link :to="'/goods/'+item.goods_id">
+          <div class="like-goods-pic" :style="'background-image:url('+item.goods_image_url+')'">
           </div>
           <div class="like-goods-price">
-            Ksh 2,239
+            Ksh {{item.goods_price}}
           </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_detail.html?goods_id=391289">
-          <div class="like-goods-pic">
-          </div>
-          <div class="like-goods-price">
-            Ksh 2,239
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_detail.html?goods_id=391289">
-          <div class="like-goods-pic">
-          </div>
-          <div class="like-goods-price">
-            Ksh 2,239
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_detail.html?goods_id=391289">
-          <div class="like-goods-pic">
-          </div>
-          <div class="like-goods-price">
-            Ksh 2,239
-          </div>
-        </a>
+        </router-link>
       </li>
     </ul>
     
@@ -61,7 +35,7 @@
       .like-goods-pic{
         width:100%;
         height: 2.22rem;
-        background-image: url(http://image-s3.kilimall.co.ke/shop/store/goods/1053/2017/03/1053_05433437220916194_240.jpg);
+        background-color: white;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center center;
@@ -85,6 +59,7 @@ export default {
     return {
 
     }
-  }
+  },
+  props:['likeList'],
 }
 </script>

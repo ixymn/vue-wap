@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<template v-if="hasData">
-			<ul v-infinite-scroll="loadMore">
+			<ul v-infinite-scroll="this.goodsId">
 				
 				<li class="eval-container clearfix" v-for="item in comList">
 					<div class="user-avatar"><img :src="item.member_avatar" /></div>
@@ -9,8 +9,8 @@
 						<div class="user-name">{{item.geval_frommembername}}</div>
 						<div class="eval-raty-time clearfix">
 							<span class="goods-raty">
-								<i class="star_gray">
-									<i class="star_orange" style=""></i>
+								<i v-for="n in 5" class="star_gray">
+									<i class="star_orange" :class="{width36:(item.geval_scores>=n)}"></i>
 								</i>
 							</span>
 							<span class="eval-time">{{item.geval_addtime_date}}</span>
@@ -43,42 +43,44 @@
 				loading:true,
 				curpage:1,
     			preventRepeatReuqest:false,//防止重复加载
+    			goodsId:"",
+		    }
+		},
+		mounted:function(){
+			this.goodsId=this.$route.params.goodsid;
+			this.initData();
+		},
+		methods:{
+			initData:async function(){
+				this.curpage =1;
+				
+				let resComment = await getGoodsComment(this.goodsId,this.curpage);
+				let list=resComment.datas.goods_eval_list;
+				this.comList = list;
+				this.hasData = list.length;
+				this.loading =false;
+				
+			},
+			loadMore: async function(){
+				if(this.preventRepeatReuqest){
+					return;
+				}
+				this.preventRepeatReuqest=true;
+				this.loading = true;
+				this.curpage+=1;
 
-    }
-},
-mounted:function(){
-	this.initData();
-},
-methods:{
-	initData:async function(){
-		this.curpage =1;
-		let resComment = await getGoodsComment("15676",this.curpage);
-		let list=resComment.datas.goods_eval_list;
-		this.comList = list;
-		this.hasData = list.length;
-		this.loading =false;
-		
-	},
-	loadMore: async function(){
-		if(this.preventRepeatReuqest){
-			return;
-		}
-		this.preventRepeatReuqest=true;
-		this.loading = true;
-		this.curpage+=1;
+				let resComment = await getGoodsComment(this.goodsId,this.curpage);
+				let list=resComment.datas.goods_eval_list;
+				this.comList = [...this.comList , ...list];
 
-		let resComment = await getGoodsComment("15676",this.curpage);
-		let list=resComment.datas.goods_eval_list;
-		this.comList = [...this.comList , ...list];
-
-		this.loading = false;
-		if(!resComment.hasmore){
-			return ;
-		}
-		this.preventRepeatReuqest=false;
-	},
-},
-}
+				this.loading = false;
+				if(!resComment.hasmore){
+					return ;
+				}
+				this.preventRepeatReuqest=false;
+			},
+		},
+	}
 </script>
 <style lang="less">
 	.eval-container {
@@ -120,9 +122,12 @@ methods:{
 	}
 	.star_orange {
 		float: left;
-		height: 0.57rem;
+		height: 0.36rem;
 		background:url(../../assets/images/star.png) no-repeat left center;
 		background-size: auto 100%;
+	}
+	.width36{
+		width: 0.36rem;
 	}
 	.eval-time {
 		float: right;

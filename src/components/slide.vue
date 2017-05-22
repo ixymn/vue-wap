@@ -17,7 +17,7 @@
         props: ['listImgs',"gdsBannerStyle","gdsBannerItemStyle"],
         data(){
           return{
-            listImg:[]
+            /*listImg:[]*/
           }
         },
         methods:{
@@ -42,7 +42,8 @@
         },
         computed:{
           listImg:function(){
-            return this.props.listImgs
+            
+           return this.listImgs
           }
         }
     }

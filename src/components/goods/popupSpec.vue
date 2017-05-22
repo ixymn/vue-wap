@@ -6,10 +6,10 @@
     </div>
     <template v-for="(item,index) in goodsInfo.spec_name">
       <div class="popup-spec-item">
-      <div>{{item.spec_name}}</div>
+        <div>{{item.spec_name}}</div>
         <ul class="clearfix">
-          <li v-for="(item1,index1) in goodsInfo.spec_value[item.spec_value]" :class="{focus: index1 == specInfo[item.spec_value]}" :test="specInfo[1]"  @click="focusSpec(item.spec_value,index1)">{{item1}}</li>
-        </ul>
+          <li v-for="(item1,index1) in goodsInfo.spec_value[item.spec_value]" :class="{focus: index1 == specInfoParent[item.spec_value]}" :test="specInfo[1]"  @click="focusSpec(item.spec_value,index1)">{{item1}}</li>
+        </ul> 
       </div>
     </template>
     
@@ -24,42 +24,46 @@
     <div class="popup-addcart-btn">
       Add To Cart
     </div>
+    <div class="loading-box" v-show="isShowLoading">
+      <LOADING />
+    </div>
   </div>
 </template>
 <script>
-  export default {
-    data: function(){
-      return {
-        specInfo:{},
-        pcs:1,
-        
-      }
-    },
-    props:['goodsInfo'],
-    methods:{
-      focusSpec:function(index,index1){
-        this.specInfo[index]=index1;
-        this.specInfo = Object.assign({},this.specInfo);
-
-        let goodsIdArr=[];
-        for(let key in this.specInfo){
-          goodsIdArr.push(this.specInfo[key]);
-        }
-        this.$emit('asyncFreshEvent',goodsIdArr.join("|"));
-
-      },
-      plusPCS:function(){
-        if(this.pcs < this.goodsInfo.goods_storage){
-          this.pcs++;
+    import Loading from '../common/loading.vue'
+    export default {
+      data: function(){
+        return {
+          specInfo:'',
+          pcs:1,
         }
       },
-      minusPCS:function(){
-        if(this.pcs > 1 ){
-          this.pcs--;
+      props:['goodsInfo','specInfoParent','isShowLoading'],
+      components:{
+        "LOADING":Loading,
+      },
+      methods:{
+        focusSpec:function(index,index1){
+          this.isShowLoading=true;
+          this.specInfoParent[index]=index1;
+          let goodsIdArr=[];
+          for(let key in this.specInfoParent){
+            goodsIdArr.push(this.specInfoParent[key]);
+          }
+          this.$emit('asyncFreshEvent',goodsIdArr.join("|"));
+        },
+        plusPCS:function(){
+          if(this.pcs < this.goodsInfo.goods_storage){
+            this.pcs++;
+          }
+        },
+        minusPCS:function(){
+          if(this.pcs > 1 ){
+            this.pcs--;
+          }
         }
-      }
-    },
-  }
+      },
+    }
 </script>
 <style lang="less">
   .popup-spec{
@@ -147,9 +151,10 @@
           margin-right: 0.33rem;
           margin-top: 0.42rem;
           border: 1px solid #eff0f3;
+          min-width: 0.78rem;
         }
         li.focus{
-            border-color:#F87622;
+          border-color:#F87622;
         }
       }
     }
@@ -167,6 +172,15 @@
       color: white;
       font-size: 0.44rem;
     }
+    .loading-box{
+      position: absolute;
+      width: 2.5rem;
+      height: 0.78rem;
+      line-height: 0.78rem;
+      left: 50%;
+      margin-left: -1.25rem;
+      top: 45%;
+      text-align: center;
+    }
   }
 </style>
-

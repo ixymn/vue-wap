@@ -1,17 +1,16 @@
 <template>
   <div style="padding:0.33rem 0.28rem;background-color:white;" class="clearfix">
       <section class="feedback-item">
-        <div style="height:0.61rem;margin-bottom:0.14rem;">
-          <em class="feedback-star"></em>
-          <em class="feedback-star"></em>
-          <em class="feedback-star"></em>
-          <em class="feedback-star"></em>
-        </div>
-        <div>Feedback 256</div>
+        <router-link :to="'/goodsDetail/'+this.goodsId">
+          <div style="height:0.61rem;margin-bottom:0.14rem;">
+            <em v-for="item in starNum" class="feedback-star"></em>
+          </div>
+        </router-link>
+        <div>Feedback {{feedbackNum}}</div>
       </section>
       <section class="feedback-item">
         <div style="height:0.61rem;margin-bottom:0.14rem;"><em class="feedback-order"></em></div>
-        <div>(Orders 35)</div>
+        <div>(Orders {{orderNum}})</div>
       </section>
 
   </div>
@@ -31,7 +30,7 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-image: url(../../assets/images/star.png);
-      margin: 0.14rem 0;
+      margin: 0.14rem 0.06rem;
     }
     .feedback-order{
       display: inline-block;
@@ -50,6 +49,6 @@ export default {
 
     }
   },
-  props:[""]
+  props:["goodsId","starNum","feedbackNum","orderNum"]
 }
 </script>

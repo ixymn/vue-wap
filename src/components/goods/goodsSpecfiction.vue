@@ -2,14 +2,13 @@
   <div class="specifiction">
     <div class="spec-title">Specfiction</div>
     <div class="spec-table">
-      <dl class="clearfix">
-        <dt>Unlock Phones</dt>
-        <dd>Yes</dd>
+      <dl v-for="(item,key,index) in goodsAttr" class="clearfix">
+        <dt>{{item.name}}</dt>
+        <dd>
+          <span v-for="(value,index) in item" v-if="(index != 'name')">{{value}}</span>
+        </dd>
       </dl>
-      <dl class="clearfix">
-        <dt>Unlock Phones</dt>
-        <dd>Yes</dd>
-      </dl>
+      
     </div>
   </div>
 </template>
@@ -66,5 +65,6 @@ export default {
 
     }
   },
+  props:["goodsAttr"],
 }
 </script>
