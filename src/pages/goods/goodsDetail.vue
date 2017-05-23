@@ -10,7 +10,7 @@
       <div class="detail-con">
         <FEEDBACK v-if="tabIndex == 1"/>
         <DETAIL v-else-if="tabIndex == 2"/>
-        <HELP v-else="tabIndex == 3" v-for="item in helpList" :helpItem="item"></HELP>
+        <HELP v-else="tabIndex == 3" v-for="(item,index) in helpList" :key=index :helpItem="item"></HELP>
       </div>
     </div>
   </div>

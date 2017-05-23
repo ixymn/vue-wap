@@ -3,7 +3,7 @@
     <HEADE :gdsHeaderStyle="headStyle" :gdsColorBack="gdsColorBack"/>
     <div class="goods-main">
       <div class="goods-img">
-        <BANNER :listImgs="listImgTmp" :gdsBannerStyle="gdsBannerStyle" :gdsBannerItemStyle="gdsBannerItemStyle">
+        <BANNER :listImg="listImgTmp" :gdsBannerStyle="gdsBannerStyle" :gdsBannerItemStyle="gdsBannerItemStyle">
           <div slot="swiper-icons" class="share-icons">
             <img class="share-icons1" src="../../assets/images/goods-fav.png">
             <img class="share-icons2" src="../../assets/images/goods-share.png">
@@ -50,7 +50,7 @@
     <div class="view-more">
       View More
     </div>
-    <FOOTER @popupSpecEvent="popupSpec"/>
+    <BUYFOOTER @popupSpecEvent="popupSpec"/>
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
       <POPUP :goodsInfo="goodsInfo" :specInfoParent="goodsInfo.spec_name_value" :isShowLoading="isShowLoading" @asyncFreshEvent="asyncFresh"/>
     </mt-popup>
@@ -144,7 +144,7 @@ export default {
   components:{
   	"HEADE":Header,
     "BANNER":Slide,
-    "FOOTER":Footer,
+    "BUYFOOTER":Footer,
     "SPEC":Spec,
     "FEEDBACK":Feedback,
     "SPECFICTION":Specfiction,

@@ -44,6 +44,7 @@
       },
       methods:{
         focusSpec:function(index,index1){
+
           this.isShowLoading=true;
           this.specInfoParent[index]=index1;
           let goodsIdArr=[];
@@ -51,6 +52,7 @@
             goodsIdArr.push(this.specInfoParent[key]);
           }
           this.$emit('asyncFreshEvent',goodsIdArr.join("|"));
+          
         },
         plusPCS:function(){
           if(this.pcs < this.goodsInfo.goods_storage){
@@ -144,6 +146,7 @@
       }
       ul{
         li{
+          text-align: center;
           font-size: 0.33rem;
           padding: 0.28rem 0.28rem;
           display: inline-block;
