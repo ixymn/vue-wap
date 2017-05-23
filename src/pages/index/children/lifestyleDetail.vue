@@ -1,109 +1,14 @@
 <script>
-import {mapState,mapMutations} from 'vuex'
-
 export default {
-	name: 'lifestyle',
-	methods:{
-	  ...mapMutations([
-			'ADD_TO_CART'
-		]),
-	addClick:function(){
-	  this.ADD_TO_CART()
+	name: 'AAAAAA',
+	created:function(){
+		alert(99)
 	}
-	},
-	computed:{
 
-	},
-	data:function(){
-		return{
-			titleGroup:[
-				{titleName:'Recommended',active:true},
-				{titleName:'Following',active:false},
-				{titleName:'3C',active:false},
-				{titleName:'Fashion',active:false},
-				{titleName:'Live',active:false}
-			],
-			ShareList:[0,1,2],
-			popupVisible:false,
-		}
-	},
-	methods:{
-		titleClick(titles){
-			for(var i in this.titleGroup){
-                this.titleGroup[i].active = false;
-            }
-            titles.active = true;
-		},
-		loadTop(){
-			var THIS = this;
-			setTimeout(function(){THIS.$refs.loadmore.onTopLoaded()},1000)
-		}
-	}
 }
 </script>
 <template>
-<div class="lifestyle-page">
-<mt-loadmore :top-method="loadTop" ref="loadmore">
-
-	<div class="topicTtile">TOPIC</div>
-
-	<div class="swipeChangeWrapper">
-		<div class="swipeChange">
-			<ul class="content">
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-				<li>
-					<img src="../../../assets/images/1.png" alt="">
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="titleGroupWrapper">
-		<div class="titleGroupChange">
-			<ul class="titleGroup clearfix">
-				<li @click="titleClick(titles)" v-for="titles in titleGroup" :class="{active:titles.active}"><span>{{titles.titleName}}</span></li>
-			</ul>
-		</div>
-	</div>
-
-	<ul class="ShareList">
-		<li v-for="Share in ShareList">
-			<div class="ShareBody">
-				<div class="infoHead">
-					<div class="infoLeft">
-						<div class="profileP">
-							<img src="../../../assets/images/profile.png" alt="">
-						</div>
-						<div class="SharerName">Garons</div>
-						<div class="ShareTime">5 mins ago</div>
-					</div>
-					<div class="infoRight">+Follow</div>
-				</div>
-				<router-link to='lifestyleDetail' class="v-link">
-					<div class="infoBody">
-						<img src="../../../assets/images/profile.png" alt="">
-						<p class="articleT">A nice weekend</p>
-						<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
-					</div>
-          		</router-link>
-			</div>
-			<ul class="infFooter clearfix">
-				<li class="Igolook"><i></i>233</li>
-				<li class="Icollect"><i></i>233</li>
-				<li class="Ishare"><i></i>Share</li>
-			</ul>
-		</li>
-	</ul>
-
-</mt-loadmore>
-      <router-view></router-view>
-
-</div>
+<div id="aaaaaaaaaaaaaaaaaaaa">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
 </template>
 
 <style lang="less">
@@ -287,8 +192,5 @@ export default {
 	background:#FFF;
 }
 
-.addGoods{
-  height: 10rem;
-  background: red;
-}
+
 </style>

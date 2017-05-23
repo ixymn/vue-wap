@@ -22,7 +22,7 @@
       </ul>
     </div>
     <transition name="router-slid" mode="out-in">
-            <router-view ></router-view>
+      <router-view ></router-view>
     </transition>
 
   </div>
@@ -54,6 +54,7 @@
 <script>
 import {mapState, mapMutations} from 'vuex'
 import Header from '../../components/header.vue'
+import {getIndexData,getFlashData} from '../../service/getData'
 
 export default {
   name: 'index',
@@ -65,9 +66,23 @@ export default {
     }
   },
   methods:{
-
+    ...mapMutations([
+       'STORE_HOME_INFO','FLASH_SALE'
+    ]),
+    async initData(){
+        let res = await getIndexData();
+        this.STORE_HOME_INFO(res);
+        let flash = await getFlashData();
+        this.FLASH_SALE(flash);
+    },
   },
   created(){
+    this.initData()
+  },
+  computed: {
+    ...mapState([
+       'home_page','cartGoods','flashSales'
+    ]),
   }
 }
 </script>
