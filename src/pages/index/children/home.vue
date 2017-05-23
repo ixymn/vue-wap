@@ -56,25 +56,20 @@ export default {
   },
   created(){
     this.loadSlide()
-
   },
   mounted(){
     this.loadSlide()
   },
   watch:{
     home_page:function(v,o){
-      let imagesSlide=[];
-      let adv_list = this.home_page.datas.adv_list;
-      for ( let [index,item] of adv_list.entries()) {
-        imagesSlide.push({"image":item.image,'type':item.type,'data':item.data})
-      }
-      this.listImg = imagesSlide
+      this.loadSlide()
     }
   }
 }
 </script>
 
 <style lang="less">
+.home-page {margin-top: 1.11rem;}
 .home-slides {margin-bottom: .28rem;}
 .swiper-container {
     width: 100%;
