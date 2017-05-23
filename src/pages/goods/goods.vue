@@ -15,7 +15,7 @@
         <div class="goods-price">
           <span>{{currUnit}} {{goodsInfo.goods_promotion_price}}</span><span>{{(goodsInfo.goods_storage!=0)?'In Stock':'Out Stock'}}</span>
         </div>
-        <div class="goods-descr">Duis sollicitudin hendrerit magna eu dictum.</div>
+      
       </div>
       <div class="goods-spec">
         <SPEC v-for="(item,key) in goodsInfo.spec" :key="key" :specItem="item" @popupSpecEvent="popupSpec"></SPEC>
@@ -46,6 +46,9 @@
       <div class="goods-like">
         <LIKE :likeList="goodsCommend"/>
       </div>
+    </div>
+    <div class="view-more">
+      View More
     </div>
     <FOOTER @popupSpecEvent="popupSpec"/>
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
@@ -191,7 +194,7 @@ export default {
     line-height: 0.5rem;
 }
 .goods-price{
-  padding: 0.28rem 0;
+  padding-top: 0.28rem;
   font-size: 0.5rem;
   color: #E4C187;
 
@@ -285,5 +288,17 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url(../../assets/images/spec-arrow.png);
+}
+.view-more{
+    position: fixed;
+    background-color: #22caf8;
+    width: 1.39rem;
+    height: 1.39rem;
+    border-radius: 50%;
+    top: 0;
+    right: 0.56rem;
+    color: white;
+    font-size: 0.39rem;
+    
 }
 </style>
