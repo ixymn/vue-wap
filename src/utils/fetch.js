@@ -4,7 +4,7 @@ import {
 
 export default async(type = 'GET', url = '', data = {}, method = 'fetch',body = 'json') => {
 	type = type.toUpperCase();
-	url = apiUrl + url;
+//	url = apiUrl + url;
 
 	if (type == 'GET') {
 		let dataStr = ''; //数据拼接字符串
@@ -43,7 +43,7 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch',body = 
 			}else if(body == "text"){
 				var responseJson = await response.text();
 			}
-			
+
 		} catch (error) {
 			throw new Error(error)
 		}
