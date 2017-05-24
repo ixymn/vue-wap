@@ -4,12 +4,12 @@ import index from '@/pages/index/index'
 import App from '../App'
  
 const home = r => require.ensure([], () => r(require('../pages/index/children/home')), 'home')
-const lifestyle = r => require.ensure([], () => r(require('../pages/index/children/lifestyle')), 'lifestyle')
+const lifestyle = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyle')), 'lifestyle')
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
 const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
-const lifestyleDetail = r => require.ensure([], () => r(require('../pages/index/children/lifestyleDetail')), 'lifestyleDetail')
-const newShare = r => require.ensure([], () => r(require('../pages/index/children/newShare')), 'newShare')
+const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
+const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
 
 Vue.use(Router)

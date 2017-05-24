@@ -1,5 +1,6 @@
 <script>
-import {mapState,mapMutations} from 'vuex'
+import {mapMutations} from 'vuex'
+import {getLifeStyle} from '../../service/getData'
 
 export default {
 	name: 'lifestyle',
@@ -8,11 +9,16 @@ export default {
 			'ADD_TO_CART'
 		]),
 	addClick:function(){
-	  this.ADD_TO_CART()
-	}
+		  this.ADD_TO_CART()
+		}
 	},
 	computed:{
-
+	    pjltest(){
+	    	return this.$store.state.pjltest
+	    }
+	},
+	created(){
+		this.initData();
 	},
 	data:function(){
 		return{
@@ -28,6 +34,13 @@ export default {
 		}
 	},
 	methods:{
+		async initData(){
+	        let res = await getLifeStyle();
+	        console.log(res)
+	        // this.STORE_HOME_INFO(res);
+	        // let flash = await getFlashData();
+	        // this.FLASH_SALE(flash);
+    	},
 		titleClick(titles){
 			for(var i in this.titleGroup){
                 this.titleGroup[i].active = false;
@@ -50,19 +63,19 @@ export default {
 
 	<mt-loadmore :top-method="loadTop" ref="loadmore">
 
-		<div class="topicTtile">TOPIC</div>
+		<div class="topicTtile">TOPIC{{pjltest}}</div>
 
 		<div class="swipeChangeWrapper">
 			<div class="swipeChange">
 				<ul class="content">
 					<li>
-						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+						<img src="../../assets/images/lifeStyle/2.png" alt="">
 					</li>
 					<li>
-						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+						<img src="../../assets/images/lifeStyle/2.png" alt="">
 					</li>
 					<li>
-						<img src="../../../assets/images/lifeStyle/2.png" alt="">
+						<img src="../../assets/images/lifeStyle/2.png" alt="">
 					</li>
 				</ul>
 			</div>
@@ -82,7 +95,7 @@ export default {
 					<div class="infoHead">
 						<div class="infoLeft">
 							<div class="profileP">
-								<img src="../../../assets/images/lifeStyle/1.png" alt="">
+								<img src="../../assets/images/lifeStyle/2.png" alt="">
 							</div>
 							<div class="SharerName">Garons</div>
 							<div class="ShareTime">5 mins ago</div>
@@ -91,7 +104,7 @@ export default {
 					</div>
 					<router-link to='lifestyleDetail' class="v-link">
 						<div class="infoBody">
-							<img src="../../../assets/images/lifeStyle/1.png" alt="">
+							<img src="../../assets/images/lifeStyle/1.png" alt="">
 							<p class="articleT">A nice weekend</p>
 							<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
 						</div>
@@ -118,7 +131,7 @@ export default {
 	position:fixed;
 	right:0.361rem;
 	bottom:1.111rem;
-	background:url(../../../assets/images/lifestyle/newShare.png);
+	background:url(../../assets/images/lifestyle/newShare.png);
 	background-size: contain;
 	// border-radius: 50%;
 	// background:#f87622;
@@ -129,12 +142,12 @@ export default {
 	margin-top: 0.278rem;
 }
 .infoHead{
-	height:60px;
+	height:1.667rem;
 	position:relative;
 }
 .infoLeft{
-	width:124px;
-	height:60px;
+	width:3.444rem;
+	height:1.667rem;
 	position:absolute;
 	left:0;
 }
@@ -145,40 +158,40 @@ export default {
 	text-align: center;
 	color:#E4C187;
 	border:1px solid #E4C187;
-	right:20px;
-	top:17px;
+	right:0.556rem;
+	top:0.472rem;
 	position:absolute;
-	font-size: 13px;
+	font-size: 0.361rem;
 
 }
 .profileP{
-	width:40px;
-	height:40px;
+	width:1.111rem;
+	height:1.111rem;
 	border-radius: 50%;
 	overflow:hidden;
 	position:absolute;
-	left:10px;
-	top:10px;
+	left:0.278rem;
+	top:0.278rem;
 	img{
 		width:100%;
 	}
 }
 .SharerName{
 	position:absolute;
-	left:58px;
-	top:10px;
+	left:1.611rem;
+	top:0.278rem;
 	color:#000;
-	font-size: 14px;
+	font-size: 0.389rem;
 }
 .ShareTime{
 	position:absolute;
-	left:58px;
-	top:30px;
+	left:1.611rem;
+	top:0.833rem;
 	color:#999999;
 
 }
 .articleT{
-	font-size: 16px;
+	font-size: 0.444rem;
 	font-weight: bold;
 	color:#000;
 	margin:2px 0 3px 0;
@@ -201,15 +214,15 @@ export default {
 		}
 	}
 	.Igolook i{
-		background:url(../../../assets/images/lifestyle/golook.png) no-repeat 0 4px;
+		background:url(../../assets/images/lifestyle/golook.png) no-repeat 0 4px;
 		background-size: contain;
 	}
 	.Icollect i{
-		background:url(../../../assets/images/lifestyle/weizan.png) no-repeat 0 4px;
+		background:url(../../assets/images/lifestyle/weizan.png) no-repeat 0 4px;
 		background-size: contain;
 	}
 	.Ishare i{
-		background:url(../../../assets/images/lifestyle/share.png) no-repeat;
+		background:url(../../assets/images/lifestyle/share.png) no-repeat;
 		position:relative;
 		top:1px;
 		margin-right: 4px;
@@ -255,10 +268,10 @@ export default {
 
 .topicTtile{
 	padding:0 0.278rem;
-	font-size: 16px;
+	font-size: 0.444rem;
 	font-weight: bold;
-	height:40px;
-	line-height: 40px;
+	height:1.111rem;
+	line-height: 1.111rem;
 	background:#fff;
 }
 .lifestyle-page{
@@ -280,7 +293,7 @@ export default {
 	width:150vw;
 	li{
 		padding:0 0.375rem;
-		font-size: 14px;
+		font-size: 0.389rem;
 		float:left;
 		color:#7E7E7E;
 		span{

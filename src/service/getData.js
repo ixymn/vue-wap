@@ -10,11 +10,13 @@ var getGoodsData = (goodsid) => fetch('GET','/index.php?act=goods&op=new_goods_d
 var getGoodsComment = (goodsid,curpage) => fetch('GET','/index.php?act=goods&op=goods_evaluate&goods_id='+goodsid+"&curpage="+curpage+"&page=10");
 //获取goods详细HTML
 var getGoodsHtml = (goodsid) => fetch('GET','/index.php?act=goods&op=goods_body&goods_id='+goodsid,{},'fetch','text');
-
+//
+var getLifeStyle = () => fetch('GET','/act=lifestyle&op=getShareHome',{});
 export {
 	getIndexData,
-  getFlashData,
+  	getFlashData,
 	getGoodsData,
 	getGoodsComment,
     getGoodsHtml,
+    getLifeStyle,
 }

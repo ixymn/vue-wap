@@ -9,7 +9,8 @@ Vue.use(Vuex)
 const state = {
   home_page:{},
   cartGoods:0,
-  flashSales:{}
+  flashSales:{},
+  pjltest:'this is a vuex test'
 }
 
 export default new Vuex.Store({
