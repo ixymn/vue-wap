@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   /*font-family: 'Roboto', Helvetica, Arial, sans-serif;*/
   -webkit-font-smoothing: antialiased;
@@ -30,6 +30,9 @@ export default {
   /*text-align: center;*/
   color: #2c3e50;
   min-height: 5rem;
+  *{
+    box-sizing:border-box;
+  }
 }
 .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;

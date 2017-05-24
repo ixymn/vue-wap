@@ -1,4 +1,4 @@
-import fetch from '../utils/fetch'
+﻿import fetch from '../utils/fetch'
 import {
 	apiUrl,apiUrlnew
 } from '../config/env'
@@ -11,12 +11,16 @@ var getGoodsData = (goodsid) => fetch('GET',apiUrl+'/index.php?act=goods&op=new_
 //获取goods评论
 var getGoodsComment = (goodsid,curpage) => fetch('GET',apiUrl+'/index.php?act=goods&op=goods_evaluate&goods_id='+goodsid+"&curpage="+curpage+"&page=10");
 //获取goods详细HTML
+
 var getGoodsHtml = (goodsid) => fetch('GET',apiUrl+'/index.php?act=goods&op=goods_body&goods_id='+goodsid,{},'fetch','text');
 
+//
+var getLifeStyle = () => fetch('GET','/act=lifestyle&op=getShareHome',{});
 export {
 	getIndexData,
-  getFlashData,
+  	getFlashData,
 	getGoodsData,
 	getGoodsComment,
     getGoodsHtml,
+    getLifeStyle,
 }
