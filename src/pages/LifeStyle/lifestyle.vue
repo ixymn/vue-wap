@@ -280,22 +280,21 @@ export default {
 
 .titleGroupChange{
 	position:relative;
-	overflow:auto;
-	height:80px;
+
 }
 .titleGroupWrapper{
 	margin-top: 0.278rem;
-	height:1.389rem;
-	overflow:hidden;
 }
 .titleGroup{
 	background:#fff;
-	width:150vw;
+  display:flex;
+  overflow-x:scroll;
+  white-space: nowrap;
 	li{
 		padding:0 0.375rem;
 		font-size: 0.389rem;
-		float:left;
 		color:#7E7E7E;
+    display:inline-block;
 		span{
 			padding:0.319rem 0 0.403rem;
 			display:inline-block;
@@ -304,14 +303,11 @@ export default {
 	li.active{
 		font-weight: bold;
 		color:#000;
-		span{
-			border-bottom: 2px solid #e4c187;
-		}
+    border-bottom: .06rem solid #e4c187;
 	}
 }
-.titleGroup{
+.titleGroup::-webkit-scrollbar {display:none}
 
-}
 .LifeDetail{
 	width:100vw;
 	height:100vh;
