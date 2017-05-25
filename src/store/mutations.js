@@ -1,7 +1,8 @@
 import {
 	STORE_HOME_INFO,
 	ADD_TO_CART,
-	FLASH_SALE
+	FLASH_SALE,
+	MUTATION_TEST
 } from './mutation-types.js'
 
 import {
@@ -14,12 +15,14 @@ export default {
 	[STORE_HOME_INFO](state, home_page_info) {
 		state.home_page = home_page_info;
 	},
-
-	
-  [ADD_TO_CART](state, Goods) {
+	[ADD_TO_CART](state, Goods) {
 		state.cartGoods += 1;
 	},
-  [FLASH_SALE](state,flash){
-    state.flashSales = flash
-  }
+	[FLASH_SALE](state,flash){
+		state.flashSales = flash
+	},
+	[MUTATION_TEST](state,test){
+		state.pjltest = test
+	}
+
 }

@@ -7,10 +7,10 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-  home_page:{},
-  cartGoods:0,
-  flashSales:{},
-  pjltest:'this is a vuex test'
+	home_page:{},
+	cartGoods:0,
+	flashSales:{},
+	pjltest:'KKKKK'
 }
 
 export default new Vuex.Store({

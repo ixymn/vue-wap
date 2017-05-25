@@ -4,46 +4,65 @@ import {getLifeStyle} from '../../service/getData'
 
 export default {
 	name: 'lifestyle',
-	methods:{
-	  ...mapMutations([
-			'ADD_TO_CART'
-		]),
-	addClick:function(){
-		  this.ADD_TO_CART()
-		}
-	},
-	computed:{
-	    pjltest(){
-	    	return this.$store.state.pjltest
-	    }
-	},
 	created(){
 		this.initData();
 	},
 	data:function(){
 		return{
-			titleGroup:[
-				{titleName:'Recommended',active:true},
-				{titleName:'Following',active:false},
-				{titleName:'3C',active:false},
-				{titleName:'Fashion',active:false},
-				{titleName:'Live',active:false}
-			],
+			totalData:{},
+			subjectList:{},
+			// titleGroup:[
+			// 	{titleName:this.subjectList,active:true},
+			// 	{titleName:'Following',active:false},
+			// 	{titleName:'3C',active:false},
+			// 	{titleName:'Fashion',active:false},
+			// 	{titleName:'Live',active:false}
+			// ],
 			ShareList:[0,1,2],
 			popupVisible:false,
 		}
 	},
+	computed:{
+	    pjltest(){
+	    	return this.$store.state.pjltest
+	    },
+	    topicList(){
+	    	return this.totalData.topicList
+	    },
+	},
 	methods:{
+	  	...mapMutations([
+			'MUTATION_TEST'
+		]),
 		async initData(){
-	        let res = await getLifeStyle();
-	        console.log(res)
-	        // this.STORE_HOME_INFO(res);
-	        // let flash = await getFlashData();
-	        // this.FLASH_SALE(flash);
+			var data = {
+				curpage:1,
+				page:10,
+				key:'',
+				share_recommend:1
+			}
+			
+	        var newData  = (await getLifeStyle(data)).datas;
+
+	        for(var i=0;i<newData.subjectList.length;i++){
+	        	newData.subjectList[i].active = false;
+	        	if(i==0){
+		        	newData.subjectList[i].active = true;
+	        	}
+	        }
+
+	        this.totalData = Object.assign({},this.totalData,newData)
+			this.subjectList = Object.assign([],this.subjectList,newData.subjectList)
+
+	        // console.log(this.totalData)
+	        // this.MUTATION_TEST(res)
     	},
 		titleClick(titles){
-			for(var i in this.titleGroup){
-                this.titleGroup[i].active = false;
+			for(let i=0;i<this.subjectList.length;i++){
+                this.subjectList[i].active = false;
+                // this.subjectList[i].subject_title = i;
+
+				console.log(this.totalData.subjectList[i].active)
             }
             titles.active = true;
 		},
@@ -63,30 +82,23 @@ export default {
 
 	<mt-loadmore :top-method="loadTop" ref="loadmore">
 
-		<div class="topicTtile">TOPIC{{pjltest}}</div>
+		<div class="topicTtile">TOPIC</div>
 
 		<div class="swipeChangeWrapper">
-			<div class="swipeChange">
-				<ul class="content">
-					<li>
-						<img src="../../assets/images/lifeStyle/2.png" alt="">
-					</li>
-					<li>
-						<img src="../../assets/images/lifeStyle/2.png" alt="">
-					</li>
-					<li>
-						<img src="../../assets/images/lifeStyle/2.png" alt="">
-					</li>
-				</ul>
-			</div>
+			<ul class="content">
+				<li v-for="topic in topicList" :topic_id="topic.topic_id">
+					<img :src="topic.topic_img" alt="">
+				</li>
+			</ul>
 		</div>
 
 		<div class="titleGroupWrapper">
-			<div class="titleGroupChange">
-				<ul class="titleGroup clearfix">
-					<li @click="titleClick(titles)" v-for="titles in titleGroup" :class="{active:titles.active}"><span>{{titles.titleName}}</span></li>
-				</ul>
-			</div>
+			<ul class="titleGroup clearfix">
+				<li @click="titleClick(titles)" v-for="titles in subjectList" :class="{active:titles.active}">
+				<span>{{titles.subject_title}}</span>
+				</li>
+				<!-- <li v-for="one in subjectList">{{one.subject_id}}</li> -->
+			</ul>
 		</div>
 
 		<ul class="ShareList">
@@ -126,11 +138,11 @@ export default {
 
 <style lang="less" scoped>
 .newShare{
-	width:44px;
-	height:44px;
+	width:1.222rem;
+	height:1.222rem;
 	position:fixed;
 	right:0.361rem;
-	bottom:1.111rem;
+	bottom:0.7rem;
 	background:url(../../assets/images/lifestyle/newShare.png);
 	background-size: contain;
 	// border-radius: 50%;
@@ -247,13 +259,13 @@ export default {
 .content{
 	z-index: 999;
 	width: 300vw;
-	position: absolute;
 	height: 3rem;
 	li{
 		width:5.139rem;
 		height:2.639rem;
 		float: left;
 		margin-right: 0.278rem;
+		overflow:hidden;
 		img{
 			width:100%;
 		}
@@ -263,7 +275,7 @@ export default {
 	padding-left: 0.278rem;
 	height: 3rem;
 	background:#fff;
-	overflow: hidden;
+	overflow-x:scroll;
 }
 
 .topicTtile{
@@ -285,8 +297,9 @@ export default {
 }
 .titleGroupWrapper{
 	margin-top: 0.278rem;
-	height:1.389rem;
-	overflow:hidden;
+	height:1.6rem;
+	overflow-x:scroll;
+	// overflow:hidden;
 }
 .titleGroup{
 	background:#fff;
