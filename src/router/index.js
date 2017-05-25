@@ -11,6 +11,10 @@ const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/good
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
+const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
+
+const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
+
 
 Vue.use(Router)
 
@@ -50,6 +54,14 @@ export default new Router({
     {
       path: '/newShare',
       component:newShare,
+    },
+    {
+      path: '/category',
+      component:category,
+    },
+    {
+      path: '/categoryII/:id',
+      component:categoryII,
     }
   ]
 })
