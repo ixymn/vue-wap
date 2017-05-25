@@ -63,6 +63,12 @@ export default {
 
   },
   created(){
+    this.initData()
+  },
+  computed: {
+    ...mapState([
+       'home_page','cartGoods','flashSales'
+    ]),
   }
 }
 </script>
