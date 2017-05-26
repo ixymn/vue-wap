@@ -9,6 +9,7 @@ Vue.use(Vuex)
 const state = {
 	home_page:{},
 	cartGoods:0,
+	cartList:{},//加入购物车商品列表
 	flashSales:{},
 	pjltest:'KKKKK'
 }

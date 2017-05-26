@@ -21,38 +21,55 @@
         <dd class="popup-good-pcs" @click="plusPCS">+</dd>
       </dl>
     </div>
-    <div class="popup-addcart-btn">
+    <div class="popup-addcart-btn" @touchstart="addToCart(storeId,goodsInfo.goods_id,goodsInfo.goods_name)">
       Add To Cart
     </div>
-    <div class="loading-box" v-show="isShowLoading">
+    <div class="loading-box" v-show="isLoading">
       <LOADING />
     </div>
   </div>
 </template>
 <script>
+    import {mapState,mapMutations} from 'vuex'
     import Loading from '../common/loading.vue'
+
     export default {
       data: function(){
         return {
           specInfo:'',
           pcs:1,
+          isLoading:false,
         }
       },
-      props:['goodsInfo','specInfoParent','isShowLoading'],
+      props:['goodsInfo','storeId','specInfoParent','isShowLoading',"storeInfo"],
       components:{
         "LOADING":Loading,
       },
+      computed:{
+        ...mapState([
+          'cartList'
+        ]),
+      },
+      watch:{
+        isShowLoading:function(val){
+          this.isLoading=val;
+        },
+        isLoading:function(val){
+          this.$emit("bindLoadingEvent",val);
+        },
+      },
       methods:{
+        ...mapMutations([
+          'ADD_CART',
+        ]),
         focusSpec:function(index,index1){
-
-          this.isShowLoading=true;
+          this.isLoading=true;
           this.specInfoParent[index]=index1;
           let goodsIdArr=[];
           for(let key in this.specInfoParent){
             goodsIdArr.push(this.specInfoParent[key]);
           }
           this.$emit('asyncFreshEvent',goodsIdArr.join("|"));
-          
         },
         plusPCS:function(){
           if(this.pcs < this.goodsInfo.goods_storage){
@@ -63,6 +80,10 @@
           if(this.pcs > 1 ){
             this.pcs--;
           }
+        },
+        addToCart:function(storeId,goodsId,goodsName){
+          this.ADD_CART({storeId,goodsId,goodsName,pcs:this.pcs,storeInfo:this.storeInfo});
+          this.$emit('finishToCartEvent');
         }
       },
     }

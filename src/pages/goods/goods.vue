@@ -47,21 +47,26 @@
         <LIKE :likeList="goodsCommend"/>
       </div>
     </div>
-    <div class="view-more">
-      View More
-    </div>
-    <BUYFOOTER @popupSpecEvent="popupSpec"/>
+    <router-link :to="'/goodsDetail/'+goodsId">
+      <div class="view-more">
+        View More
+      </div>
+    </router-link>
+    
+      <BUYFOOTER @popupSpecEvent="popupSpec" :cartCount="totalNum"/>
+    
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-      <POPUP :goodsInfo="goodsInfo" :specInfoParent="goodsInfo.spec_name_value" :isShowLoading="isShowLoading" @asyncFreshEvent="asyncFresh"/>
+      <POPUP :goodsInfo="goodsInfo" :storeId="storeId" :storeInfo="storeInfo" :specInfoParent="goodsInfo.spec_name_value" :isShowLoading="isShowLoading" @asyncFreshEvent="asyncFresh" @bindLoadingEvent="bindLoading" @finishToCartEvent='finishToCart'/>
     </mt-popup>
   </div>
 </template>
 
 <script>
+import {mapState,mapMutations} from 'vuex'
 import {currencyUnit} from '../../config/env'
 import {getGoodsData} from '../../service/getData'
 
-import Header from '../../components/common/headerBack.vue'
+import Head from '../../components/common/headerBack.vue'
 import Footer from '../../components/common/buyFooter.vue'
 import Spec from '../../components/goods/goodsSpec.vue'
 import Feedback from '../../components/goods/goodsFeedback.vue'
@@ -90,17 +95,35 @@ export default {
       goodsId:'',//当前商品号
       listImgTmp:[],
       goodsInfo:{},
-      popupVisible:false,
+      popupVisible:false,//选择规格弹框
       spec_list:{},
       goodsCommend:{},//推荐商品
-      isShowLoading:false,//选择规格加载loading
+      isShowLoading:true,//选择规格加载loading
       currUnit:'',
+      storeId:'',//店铺id
+      storeInfo:'',
   	});
   },
+
   mounted:function(){
     this.goodsId = this.$route.params.goodsid;
     this.currUnit = currencyUnit;
     this.initData();
+  },
+  computed:{
+      ...mapState(['cartList']),
+
+      //购物车总商品数量
+      totalNum:function(){
+        let num = 0;
+        //console.log(this.cartList);
+        for(let index in this.cartList){
+          for(let index1 in this.cartList[index]){
+            num += this.cartList[index][index1].num;
+          }
+        }
+        return num;
+      },
   },
   methods:{
     initData:async function(){
@@ -114,6 +137,11 @@ export default {
       this.spec_list = res.datas.spec_list;
       this.listImgTmp = imagesSlide;
       this.goodsCommend = res.datas.goods_commend;
+      this.storeId = res.datas.store_info.store_id;
+      this.storeInfo = res.datas.store_info;
+    },
+    bindLoading:function(val){
+      this.isShowLoading=val;
     },
     popupSpec:function(){
       this.popupVisible=true;
@@ -139,10 +167,13 @@ export default {
       this.listImgTmp = imagesSlide;
       this.goodsCommend = res.datas.goods_commend;
       this.isShowLoading = false;
-    }
+    },
+    finishToCart:function(){
+      this.popupVisible=false;
+    },
   },
   components:{
-  	"HEADE":Header,
+  	"HEADE":Head,
     "BANNER":Slide,
     "BUYFOOTER":Footer,
     "SPEC":Spec,
@@ -292,13 +323,17 @@ export default {
 .view-more{
     position: fixed;
     background-color: #22caf8;
-    width: 1.39rem;
-    height: 1.39rem;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.3rem;
     border-radius: 50%;
-    top: 0;
+    top: 50%;
+    margin-top: -0.69rem;
     right: 0.56rem;
     color: white;
     font-size: 0.39rem;
-    
+    text-align: center;
+    box-shadow: 2px 2px 10px #7fd8f1;
+    cursor: pointer;
 }
 </style>
