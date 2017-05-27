@@ -5,10 +5,11 @@
 			<template v-for="(item,index) in cartList">
 				<section class="store-box">
 					<div class="store-title">
-						<em class="check-ico"></em>{{index}}
+						<em class="check-ico"></em>{{shopList[index].store_name}}
 					</div>
 					<GOODITEM v-for="(item1,goodsid) in item" :cartGoodInfo="item1"/>
 					<div class="store-descr clearfix">
+
 						<div>
 							<img src="../../assets/images/store-desc-ico1.png">
 							Shipped by Kilimall
@@ -33,8 +34,11 @@
 
 		<div class="check-foot clearfix">
 			<div class="cart-total-price">Ksh 2,239</div>
-			<div class="cart-btn">Check Out</div>
+			<div class="cart-btn" @click="popupOrder">Check Out</div>
 		</div>
+		<mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
+     		
+    	</mt-popup>
 	</div>
 </template>
 
@@ -46,7 +50,7 @@ import cartGood from '../../components/cart/cartGood.vue'
 export default {
 	data:function(){
 		return({
-			
+			popupVisible:false,
 		});
 	},
 	components:{
@@ -54,8 +58,13 @@ export default {
 		"GOODITEM":cartGood,
 	},
 	computed:{
-	  	...mapState(['cartList']),
+	  	...mapState(['cartList','shopList']),
 	},
+	methods:{
+		popupOrder:function(){
+			this.popupVisible=true;
+		}
+	}
 }
   
 </script>

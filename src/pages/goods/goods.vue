@@ -56,7 +56,7 @@
       <BUYFOOTER @popupSpecEvent="popupSpec" :cartCount="totalNum"/>
     
     <mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-      <POPUP :goodsInfo="goodsInfo" :storeId="storeId" :storeInfo="storeInfo" :specInfoParent="goodsInfo.spec_name_value" :isShowLoading="isShowLoading" @asyncFreshEvent="asyncFresh" @bindLoadingEvent="bindLoading" @finishToCartEvent='finishToCart'/>
+      <POPUP :goodsInfo="goodsInfo" :storeInfo="storeInfo" :specInfoParent="goodsInfo.spec_name_value" :isShowLoading="isShowLoading" @asyncFreshEvent="asyncFresh" @bindLoadingEvent="bindLoading" @finishToCartEvent='finishToCart'/>
     </mt-popup>
   </div>
 </template>

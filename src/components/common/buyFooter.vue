@@ -57,7 +57,6 @@
       border:0.06rem solid white;
       color: white;
       letter-spacing: 0.03rem;
-      line-height:  0.44rem;
       text-align: center;
       box-sizing: border-box;
     }

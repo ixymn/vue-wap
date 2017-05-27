@@ -5,12 +5,12 @@
 			<div class="goods-img"></div>
 			<div class="goods-info">
 				<p class="goods-name">{{goodsName}}</p>
-				<p class="cart-goods-price"><span>KSh</span><span>4,499</span></p>
+				<p class="cart-goods-price"><span>KSh</span><span style="margin-left:0.22rem;">{{cartGoodInfo.goodsInfo.goods_promotion_price}}</span></p>
 				<div class="clearfix">
-					<div class="goods-spex">BLue,M</div>
+					<div class="goods-spex">{{specValue}}</div>
 					<div class="goods-pcs">
 						<em class="goods-minus"></em>
-						<span>1</span>
+						<span>{{cartGoodInfo.num}}</span>
 						<em class="goods-plus"></em>
 					</div>
 				</div>
@@ -29,12 +29,20 @@ export default {
 	props:["cartGoodInfo"],
 	computed:{
 		goodsName:function(){
-			let str=this.cartGoodInfo.goods_name;
+			let str=this.cartGoodInfo.goodsInfo.goods_name;
 			if(str.length>25){
 				return str.substr(0,25)+"...";
 			}
 			return str;
 		},
+		specValue:function(){
+			let arr=this.cartGoodInfo.goodsInfo.spec,strArr=[];
+			for(let i in arr){
+				strArr.push(arr[i].spec_value);
+			}
+			return strArr.join(",");
+		}
+
 	},
 }
 </script>
