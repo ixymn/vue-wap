@@ -8,6 +8,7 @@ const lifestyle = r => require.ensure([], () => r(require('../pages/LifeStyle/li
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
 const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
+const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'cart')//购物车
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
@@ -42,6 +43,10 @@ export default new Router({
     {
       path: '/goodsDetail/:goodsid',
       component:goodsDetail,
+    },
+    {
+      path: '/cart',
+      component:cart,
     },
     {
       path: '/lifestyleDetail',
