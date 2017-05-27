@@ -30,9 +30,7 @@ export default {
   /*text-align: center;*/
   color: #2c3e50;
   min-height: 5rem;
-  *{
-    box-sizing:border-box;
-  }
+  
 }
 .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;
