@@ -17,6 +17,12 @@ var getGoodsHtml = (goodsid) => fetch('GET',apiUrl+'/index.php?act=goods&op=good
 //LifeStyle
 var getLifeStyle = (data) => fetch('GET',apiUrl+'/index.php?act=lifestyle&op=getShareHome'+'&curpage='+data.curpage+'&page='+data.page+'&key='+data.key+'&share_recommend='+data.share_recommend,{})
 
+//Category一级分类
+var getFirstCate = () => fetch('GET',apiUrl+'/index.php?act=goods_class',{});
+
+//Category二级分类
+var getSecondCate = (gc_id) => fetch('GET',apiUrl+'/index.php?act=goods_class&op=get_child_all&gc_id='+gc_id,{});
+
 export {
 	getIndexData,
   	getFlashData,
@@ -24,4 +30,6 @@ export {
 	getGoodsComment,
     getGoodsHtml,
     getLifeStyle,
+    getFirstCate,
+    getSecondCate,
 }

@@ -11,15 +11,8 @@ export default {
 		return{
 			totalData:{},
 			subjectList:{},
-			// titleGroup:[
-			// 	{titleName:this.subjectList,active:true},
-			// 	{titleName:'Following',active:false},
-			// 	{titleName:'3C',active:false},
-			// 	{titleName:'Fashion',active:false},
-			// 	{titleName:'Live',active:false}
-			// ],
-			ShareList:[0,1,2],
-			popupVisible:false,
+			shareList:[],
+			popupVisible:false
 		}
 	},
 	computed:{
@@ -53,6 +46,8 @@ export default {
 
 	        this.totalData = Object.assign({},this.totalData,newData)
 			this.subjectList = Object.assign([],this.subjectList,newData.subjectList)
+			this.shareList = Object.assign([],this.shareList,newData.shareList)
+			console.log(this.shareList)
 
 	        // console.log(this.totalData)
 	        // this.MUTATION_TEST(res)
@@ -97,19 +92,18 @@ export default {
 				<li @click="titleClick(titles)" v-for="titles in subjectList" :class="{active:titles.active}">
 				<span>{{titles.subject_title}}</span>
 				</li>
-				<!-- <li v-for="one in subjectList">{{one.subject_id}}</li> -->
 			</ul>
 		</div>
 
 		<ul class="ShareList">
-			<li v-for="Share in ShareList">
+			<li v-for="share in shareList">
 				<div class="ShareBody">
 					<div class="infoHead">
 						<div class="infoLeft">
 							<div class="profileP">
-								<img src="../../assets/images/lifeStyle/2.png" alt="">
+								<img :src="share.author_avatar" alt="">
 							</div>
-							<div class="SharerName">Garons</div>
+							<div class="SharerName">{{share.author_name}}</div>
 							<div class="ShareTime">5 mins ago</div>
 						</div>
 						<div class="infoRight">+Follow</div>
@@ -117,14 +111,14 @@ export default {
 					<router-link to='lifestyleDetail' class="v-link">
 						<div class="infoBody">
 							<img src="../../assets/images/lifeStyle/1.png" alt="">
-							<p class="articleT">A nice weekend</p>
-							<p class="articleB">Betty and I and other members of the family spend a nice weekend together at Fanling Lodge. </p>
+							<p class="articleT">{{share.share_title}}</p>
+							<p class="articleB">{{share.share_content}}</p>
 						</div>
 	          		</router-link>
 				</div>
 				<ul class="infFooter clearfix">
-					<li class="Igolook"><i></i>233</li>
-					<li class="Icollect"><i></i>233</li>
+					<li class="Igolook"><i></i>{{share.click_count}}</li>
+					<li class="Icollect"><i></i>{{share.collection_count}}</li>
 					<li class="Ishare"><i></i>Share</li>
 				</ul>
 			</li>
@@ -137,6 +131,9 @@ export default {
 </template>
 
 <style lang="less" scoped>
+a:hover {
+    text-decoration: none;
+}
 .newShare{
 	width:1.222rem;
 	height:1.222rem;
@@ -194,6 +191,7 @@ export default {
 	top:0.278rem;
 	color:#000;
 	font-size: 0.389rem;
+	white-space: nowrap;
 }
 .ShareTime{
 	position:absolute;

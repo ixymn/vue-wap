@@ -7,12 +7,39 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-	home_page:{},
-	cartGoods:0,
-	cartList:{},//¼ÓÈë¹ºÎï³µÉÌÆ·ÁĞ±í
-	shopList:{},//¹ºÎï³µ ÉÌÆ·ÏêÇéµÄµêÆÌĞÅÏ¢
-	flashSales:{},
-	pjltest:'KKKKK'
+  site:{},
+  sites:{
+    "kenya":{
+      country:"Kenya",
+      currency:"KSh",
+      apiUrl:"//mobile.kilimall.co.ke/",
+    },
+    "nigeria":{
+      country:"Nigeria",
+      currency:"â‚¦",
+      apiUrl:"//mobile.kilimall.co.ng/",
+    },
+    "uganda":{
+      country:"Uganda",
+      currency:"UGX",
+      apiUrl:"//mobile.kilimall.co.ug/",
+    },
+    "test":{
+      country:"test",
+      currency:"UGX",
+      apiUrl:"//mobile.kili.co/",
+    },
+    "local":{
+      country:"local",
+      currency:"UGX",
+      apiUrl:"//mobile.kili.com/",
+    },
+  },
+  home_page:{},
+  cartGoods:0,
+  cartList:{},//åŠ å…¥è´­ç‰©è½¦å•†å“åˆ—è¡¨
+  shopList:{},//è´­ç‰©è½¦ å•†å“è¯¦æƒ…çš„åº—é“ºä¿¡æ¯
+  flashSales:{}
 }
 
 export default new Vuex.Store({

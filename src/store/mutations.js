@@ -1,9 +1,9 @@
 import {
 	STORE_HOME_INFO,
-	ADD_TO_CART,
-	ADD_CART,
-	FLASH_SALE,
-	MUTATION_TEST
+  ADD_TO_CART,
+  ADD_CART,
+  FLASH_SALE,
+  SET_SITES
 } from './mutation-types.js'
 
 import {
@@ -41,15 +41,17 @@ export default {
 
 		state.cartList = {...cart};
 		state.shopList = {...shop};
-		//´æÈëlocalstorage
+		//å­˜å…¥localstorage
 		setStore('buyCart',state.cartList);
 		setStore('buyShop',state.shopList);
 	},
 	[FLASH_SALE](state,flash){
 		state.flashSales = flash
 	},
-	[MUTATION_TEST](state,test){
-		state.pjltest = test
-	}
-
+  [FLASH_SALE](state,flash){
+    state.flashSales = flash
+  },
+  [SET_SITES](state,country){
+    state.site = state.sites[country];
+  },
 }

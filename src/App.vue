@@ -11,10 +11,9 @@
 export default {
   name: 'app',
   methods: {
-
+    
    },
   created : function () {
-
   },
   methods : {
 
@@ -23,6 +22,9 @@ export default {
 </script>
 
 <style lang="less">
+a{
+  color:#000;
+}
 #app {
   /*font-family: 'Roboto', Helvetica, Arial, sans-serif;*/
   -webkit-font-smoothing: antialiased;

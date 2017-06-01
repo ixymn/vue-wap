@@ -69,21 +69,34 @@ export default {
   },
   methods:{
     ...mapMutations([
-       'STORE_HOME_INFO','FLASH_SALE'
+      'SET_SITES'
     ]),
-    async initData(){
-        let res = await getIndexData();
-        this.STORE_HOME_INFO(res);
-        let flash = await getFlashData();
-        this.FLASH_SALE(flash);
+    detectCountry:function(){
+      let countryCookie = this.$cookie.get("country");
+      if(countryCookie){
+        return countryCookie;
+      }else{
+        return false;
+      }
     },
+    useCountryData:function(c){
+      console.log(c);
+      this.SET_SITES(c);
+    },
+
   },
   created(){
-    this.initData()
+    var whichCountry = this.detectCountry();
+    if(whichCountry){
+      this.useCountryData( whichCountry );
+    }else{
+      this.$router.replace("/changeCountry")
+      //this.useCountryData( 'test' );
+    }
   },
   computed: {
     ...mapState([
-       'home_page','cartGoods','flashSales'
+       'home_page','cartGoods','flashSales','site'
     ]),
   }
 }
