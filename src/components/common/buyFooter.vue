@@ -1,9 +1,11 @@
 <template>
   <footer class="buy-footer">
     <div class="buy-ico chat"></div>
-    <div class="buy-ico cart">
-      <em class="cart-band">99</em>
-    </div>
+    <router-link to="/cart">
+      <div class="buy-ico cart">
+        <em class="cart-band">{{cartCount}}</em>
+      </div>
+    </router-link>
     <div class="buy_btn" @click="popupSpecEvent">Buy</div>
   </footer>
 </template>
@@ -55,7 +57,6 @@
       border:0.06rem solid white;
       color: white;
       letter-spacing: 0.03rem;
-      line-height:  0.44rem;
       text-align: center;
       box-sizing: border-box;
     }
@@ -70,7 +71,7 @@ export default {
 
     }
   },
-  props:[],
+  props:['cartCount'],
   methods: {
    popupSpecEvent:function(){
       this.$emit('popupSpecEvent');
