@@ -87,11 +87,11 @@ export default {
   },
   created(){
     var whichCountry = this.detectCountry();
-    console.log(whichCountry);
     if(whichCountry){
       this.useCountryData( whichCountry );
     }else{
-      this.useCountryData( 'test' );
+      this.$router.replace("/changeCountry")
+      //this.useCountryData( 'test' );
     }
   },
   computed: {
