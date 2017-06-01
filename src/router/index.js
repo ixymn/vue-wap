@@ -12,14 +12,12 @@ const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'ca
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
-<<<<<<< HEAD
+
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
 
 const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
 
 
-=======
->>>>>>> 5222b758955377ae195db7c8c644d9ad56201dcc
 Vue.use(Router)
 
 export default new Router({
