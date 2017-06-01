@@ -15,6 +15,8 @@ const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeSt
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
 const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
+const todayDeal = r => require.ensure([], () => r(require('../pages/todayDeal/todayDeal')), 'todayDeal')
+
 
 const changeCountry = r => require.ensure([], () => r(require('../pages/settings/changeCountry')), 'changeCountry')
 
@@ -81,6 +83,10 @@ export default new Router({
     {
       path: '/changeCountry',
       component: changeCountry
+    },
+    {
+      path: '/todayDeal',
+      component:todayDeal,
     }
   ]
 })

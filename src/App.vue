@@ -3,16 +3,14 @@
     <transition name="router-fade" mode="out-in">
       <router-view></router-view>
     </transition>
- 
+
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'app',
-  methods: {
-    
-   },
   created : function () {
   },
   methods : {
@@ -32,7 +30,7 @@ a{
   /*text-align: center;*/
   color: #2c3e50;
   min-height: 5rem;
-  
+
 }
 .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;

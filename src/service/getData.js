@@ -1,7 +1,20 @@
 ﻿import fetch from '../utils/fetch'
-import {
-	apiUrl,apiUrlnew
-} from '../config/env.js'
+import store from '../store'
+import Vue from 'vue'
+function getCookie(name){
+  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+  if(arr=document.cookie.match(reg))
+      return unescape(arr[2]);
+  else
+      return null;
+}
+var country = getCookie('country');
+if(country){
+  store.commit('SET_SITES',country);
+}else{
+  store.commit('SET_SITES','kenya');
+}
+var apiUrl = store.state.site.apiUrl;
 //获取首页数据
 var getIndexData = () => fetch('GET', apiUrl+'/index.php?act=index_new&op=index', {});
 //获取秒杀商品数据
@@ -23,6 +36,9 @@ var getFirstCate = () => fetch('GET',apiUrl+'/index.php?act=goods_class',{});
 //Category二级分类
 var getSecondCate = (gc_id) => fetch('GET',apiUrl+'/index.php?act=goods_class&op=get_child_all&gc_id='+gc_id,{});
 
+//todayDeal
+var getTodayDeal = (data) => fetch('GET',apiUrl+'/index.php?act=promotion&page='+data.page+'&curpage='+data.curpage,{});
+
 export {
 	getIndexData,
   	getFlashData,
@@ -32,4 +48,5 @@ export {
     getLifeStyle,
     getFirstCate,
     getSecondCate,
+    getTodayDeal,
 }
