@@ -48,9 +48,6 @@
 .router-slid-enter-active, .router-slid-leave-active {transition: all .4s;}
 .router-slid-enter, .router-slid-leave-active {transform: translate3d(2rem, 0, 0);opacity: 0;}
 
-
-
-
 </style>
 
 <script>
@@ -69,7 +66,7 @@ export default {
   },
   methods:{
     ...mapMutations([
-      'SET_SITES'
+      'SET_SITES','STORE_HOME_INFO','FLASH_SALE'
     ]),
     detectCountry:function(){
       let countryCookie = this.$cookie.get("country");
@@ -80,8 +77,14 @@ export default {
       }
     },
     useCountryData:function(c){
-      console.log(c);
-      this.SET_SITES(c);
+      //this.SET_SITES(c);
+    },
+    async initData(){
+
+        let res = await getIndexData(this.site.apiUrl);
+        this.STORE_HOME_INFO(res);
+        let flash = await getFlashData();
+        this.FLASH_SALE(flash);
     },
 
   },
@@ -93,6 +96,8 @@ export default {
       this.$router.replace("/changeCountry")
       //this.useCountryData( 'test' );
     }
+    this.initData()
+
   },
   computed: {
     ...mapState([
