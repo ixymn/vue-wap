@@ -11,11 +11,10 @@ const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/good
 const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'cart')//购物车
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
-
-
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
-
 const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
+const todayDeal = r => require.ensure([], () => r(require('../pages/todayDeal/todayDeal')), 'todayDeal')
+
 
 
 Vue.use(Router)
@@ -68,6 +67,10 @@ export default new Router({
     {
       path: '/categoryII/:id',
       component:categoryII,
+    },
+    {
+      path: '/todayDeal',
+      component:todayDeal,
     }
   ]
 })
