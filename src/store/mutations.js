@@ -1,6 +1,7 @@
 import {
 	STORE_HOME_INFO,
   ADD_TO_CART,
+  ADD_CART,
   FLASH_SALE,
   SET_SITES
 } from './mutation-types.js'
