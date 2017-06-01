@@ -131,6 +131,9 @@ export default {
 </template>
 
 <style lang="less" scoped>
+a:hover {
+    text-decoration: none;
+}
 .newShare{
 	width:1.222rem;
 	height:1.222rem;
