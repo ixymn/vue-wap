@@ -9,7 +9,8 @@ export default {
 		}
 	},
 	created(){
-		this.initData()
+		this.initData();
+		window.addEventListener('scroll', this.handleScroll);
 	},
 	methods:{
 		async initData(){
@@ -24,6 +25,11 @@ export default {
 
 	        this.todayData = Object.assign([],this.todayData,newData)
     	},
+    	handleScroll(){
+    		console.log(document.body.scrollTop)
+    		var li = document.querySelector()
+    		// document.querySelectorAll("#test")[0];
+    	}
 	},
 	computed:{
 
@@ -31,15 +37,17 @@ export default {
 }
 </script>
 <template>
-<div>
+<div class="wrapper">
 	<ul class="todayList">
 		<li v-for="good in todayData">
-			<img :src="good.goods_image_url" alt="">
+			<div class="todayImgWrapper">				
+				<img :src="good.goods_image_url" alt="">
+			</div>
 			<p>{{good.goods_jingle}}</p>
 			<div>
 				<span>Ksh</span>
 				<em>{{good.goods_price}}</em>
-				<i :class="{fbk:isActive,text-danger: !isActive }"></i>
+				<!-- <i :class="{fbk:isActive,text-danger: !isActive }"></i> -->
 			</div>
 			<h4>
 				{{good.store_name}}
@@ -50,20 +58,29 @@ export default {
 </template>
 
 <style lang="less" scoped>
+.wrapper *{
+	box-sizing: border-box;
+}
 .todayList{
 	display:flex;
 	flex-wrap:wrap;
 	justify-content:space-between;
 	li{
 		width:4.97rem;
-		height:4rem;
 		background:#fff;
 		margin-bottom: 0.06rem;
+		padding:0 0.2rem;
 		p{
-			font-size: 0.444rem;
+			font-size: 0.389rem;
 		    line-height: .6rem;
 		    height: 1.2rem;
 		    overflow: hidden;
+		}
+		img{
+			width:100%;
+		}
+		.todayImgWrapper{
+			padding:0.6rem;
 		}
 	}
 	div{
