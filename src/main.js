@@ -16,6 +16,12 @@ import Icon from 'vue-awesome/components/Icon.vue'
 import axios from 'axios'
 Vue.prototype.$http = axios
 
+// use vue-cookie deals with cookies , usage: this.$cookie.set('test', 'Hello world!', 1);
+var VueCookie = require('vue-cookie');
+Vue.use(VueCookie);
+
+
+
 // flexible
 import './static/flexible_css.js'
 import './static/flexible.js'
