@@ -3,15 +3,22 @@
     <transition name="router-fade" mode="out-in">
       <router-view></router-view>
     </transition>
- 
+
   </div>
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
+
 export default {
   name: 'app',
+  computed: {
+    ...mapState([
+       'home_page','cartGoods','flashSales'
+    ]),
+  },
   methods: {
-    
+
    },
   created : function () {
   },
