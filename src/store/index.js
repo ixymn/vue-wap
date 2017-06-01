@@ -7,6 +7,35 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
+  site:{},
+  sites:{
+    "kenya":{
+      country:"Kenya",
+      currency:"KSh",
+      apiUrl:"//mobile.kilimall.co.ke/",
+
+    },
+    "nigeria":{
+      country:"Nigeria",
+      currency:"₦",
+      apiUrl:"//mobile.kilimall.co.ng/",
+    },
+    "uganda":{
+      country:"Uganda",
+      currency:"UGX",
+      apiUrl:"//mobile.kilimall.co.ug/",
+    },
+    "test":{
+      country:"test",
+      currency:"UGX",
+      apiUrl:"//mobile.kili.co/",
+    },
+    "local":{
+      country:"local",
+      currency:"UGX",
+      apiUrl:"//mobile.kili.com/",
+    },
+  },
   home_page:{},
   cartGoods:0,
   flashSales:{}

@@ -7,10 +7,10 @@ const home = r => require.ensure([], () => r(require('../pages/index/children/ho
 const lifestyle = r => require.ensure([], () => r(require('../pages/index/children/lifestyle')), 'lifestyle')
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
-
-const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
-const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
-const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
+// 
+// const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
+// const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
+// const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
 const changeCountry = r => require.ensure([], () => r(require('../pages/settings/changeCountry')), 'changeCountry')
 
@@ -42,18 +42,18 @@ export default new Router({
       component: goods,
 
     },
-    {
-      path: '/goodsDetail/:goodsid',
-      component:goodsDetail,
-    },
-    {
-      path: '/lifestyleDetail',
-      component:lifestyleDetail,
-    },
-    {
-      path: '/newShare',
-      component:newShare,
-    },
+    // {
+    //   path: '/goodsDetail/:goodsid',
+    //   component:goodsDetail,
+    // },
+    // {
+    //   path: '/lifestyleDetail',
+    //   component:lifestyleDetail,
+    // },
+    // {
+    //   path: '/newShare',
+    //   component:newShare,
+    // },
     {
       path: '/changeCountry',
       component: changeCountry

@@ -60,14 +60,35 @@ export default {
     }
   },
   methods:{
+    ...mapMutations([
+      'SET_SITES'
+    ]),
+    detectCountry:function(){
+      let countryCookie = this.$cookie.get("country");
+      if(countryCookie){
+        return countryCookie;
+      }else{
+        return false;
+      }
+    },
+    useCountryData:function(c){
+      console.log(c);
+      this.SET_SITES(c);
+    },
 
   },
   created(){
-    this.initData()
+    var whichCountry = this.detectCountry();
+    console.log(whichCountry);
+    if(whichCountry){
+      this.useCountryData( whichCountry );
+    }else{
+      this.useCountryData( 'test' );
+    }
   },
   computed: {
     ...mapState([
-       'home_page','cartGoods','flashSales'
+       'home_page','cartGoods','flashSales','site'
     ]),
   }
 }

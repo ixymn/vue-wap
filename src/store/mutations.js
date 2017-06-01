@@ -1,7 +1,8 @@
 import {
 	STORE_HOME_INFO,
   ADD_TO_CART,
-  FLASH_SALE
+  FLASH_SALE,
+  SET_SITES
 } from './mutation-types.js'
 
 import {
@@ -18,5 +19,9 @@ export default {
 	},
   [FLASH_SALE](state,flash){
     state.flashSales = flash
-  }
+  },
+  [SET_SITES](state,country){
+    console.log(state.sites[country]);
+    state.site = state.sites[country];
+  },
 }
