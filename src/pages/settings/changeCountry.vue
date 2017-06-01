@@ -41,7 +41,8 @@ export default {
         },
         enterMall:function(){
           if(this.activeIndex!=null){
-            this.$router.replace("/home")
+            //this.$router.replace("/home");
+            window.location.href="/";
 
           }
         }
@@ -55,6 +56,7 @@ export default {
       },
 
       created(){
+        console.log(0);
 
       },
       // computed:{

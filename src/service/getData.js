@@ -1,7 +1,20 @@
 ﻿import fetch from '../utils/fetch'
-import {
-	apiUrl,apiUrlnew
-} from '../config/env.js'
+import store from '../store'
+import Vue from 'vue'
+function getCookie(name){
+  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+  if(arr=document.cookie.match(reg))
+      return unescape(arr[2]);
+  else
+      return null;
+}
+var country = getCookie('country');
+if(country){
+  store.commit('SET_SITES',country);
+}else{
+  store.commit('SET_SITES','kenya');
+}
+var apiUrl = store.state.site.apiUrl;
 //获取首页数据
 var getIndexData = () => fetch('GET', apiUrl+'/index.php?act=index_new&op=index', {});
 //获取秒杀商品数据
