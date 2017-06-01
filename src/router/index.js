@@ -11,9 +11,7 @@ const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/good
 const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'cart')//购物车
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
-
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
-
 const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
 
 
