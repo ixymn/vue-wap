@@ -41,6 +41,10 @@ export default new Router({
       component: goods,
     },
     {
+      path: '/goodsDetail/:goodsid/:tabindex',
+      component:goodsDetail,
+    },
+    {
       path: '/goodsDetail/:goodsid',
       component:goodsDetail,
     },

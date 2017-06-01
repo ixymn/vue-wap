@@ -22,12 +22,24 @@
       </div>
 
       <div class="goods-express">
-        <div style="float:left;">
-          <em class="goods-express-ico1" style=""></em>
-          KiliExpress 1-3 Days
-          <em class="goods-express-ico2" ></em>
+        <div style="float:left;width:54%;">
+          <template  v-if="goodsInfo.goods_logistics_type == 0">
+            <em class="goods-express-ico1 goods-express-ico1-1" ></em>
+          Shipped by Kilimall
+          </template>
+          <template  v-else-if="goodsInfo.goods_logistics_type == 1">
+            <em class="goods-express-ico1 goods-express-ico1-2" ></em>
+          Shipped by local seller
+          </template>
+          <template  v-else-if="goodsInfo.goods_logistics_type == 2">
+            <em class="goods-express-ico1 goods-express-ico1-3" ></em>
+          Shipped from overseas
+          </template>
+          
+          <router-link :to="'/goodsDetail/'+goodsId+'/3'"><em class="goods-express-ico2" ></em></router-link>
         </div>
-        <div style="float:right;">
+       
+        <div style="float:right;" v-show="goodsInfo.pay_on_deliver">
           <em class="goods-express-ico3" ></em>
           Pay on delivery
         </div>
@@ -259,7 +271,7 @@ export default {
   background-color: #fff;
 }
 .goods-express{
-  height: 0.33rem;
+  height: 0.44rem;
   margin-top: 0.28rem;
   padding: 0.47rem 0.28rem;
   background-color: white;
@@ -267,28 +279,43 @@ export default {
   color: #9B9B9B;
 }
 .goods-express>div{
-  height:100%;
-  width:48%;
+  height:0.44rem;
+  line-height: 0.44rem;
+  width:42%;
 }
 .goods-express>div:nth-child(2){
   border-left:0.03rem solid #DDDFE4;
+  padding-left: 0.28rem;
 }
 .goods-express>div>em{
   display: inline-block;
-  width: 0.33rem;
-  height: 0.33rem;
+  width: 0.44rem;
+  height: 0.44rem;
   background-repeat: no-repeat;;
   background-size: contain;
   vertical-align: middle;
 }
-.goods-express-ico1{
-  background-image:url(../../assets/images/goods-express.png);
+.goods-express-ico1-1{
+  background-image:url(../../assets/images/ic_express_fbk.png);
+}
+.goods-express-ico1-2{
+  background-image:url(../../assets/images/ic_express_ds.png);
+}
+.goods-express-ico1-3{
+  background-image:url(../../assets/images/ic_express_gs.png);
 }
 .goods-express-ico2{
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background-repeat: no-repeat;;
+  background-size: contain;
+  vertical-align: middle;
   background-image:url(../../assets/images/goods-express-link.png);
   margin-left: 0.14rem;
 }
 .goods-express-ico3{
+
   background-image:url(../../assets/images/goods-delivery.png);
 }
 .goods-specfiction{
@@ -335,5 +362,6 @@ export default {
     text-align: center;
     box-shadow: 2px 2px 10px #7fd8f1;
     cursor: pointer;
+    z-index: 998;
 }
 </style>

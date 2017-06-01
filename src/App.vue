@@ -38,4 +38,10 @@ export default {
 .router-fade-enter, .router-fade-leave-active {
     opacity: 0;
 }
+.em-ico{
+  display: inline-block;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 </style>
