@@ -33,6 +33,10 @@ a{
   /*text-align: center;*/
   color: #2c3e50;
   min-height: 5rem;
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 5222b758955377ae195db7c8c644d9ad56201dcc
 }
 .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;

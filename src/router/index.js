@@ -8,14 +8,18 @@ const lifestyle = r => require.ensure([], () => r(require('../pages/LifeStyle/li
 const usercenter = r => require.ensure([], () => r(require('../pages/index/children/usercenter')), 'usercenter')
 const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 'goods')
 const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
+const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'cart')//购物车
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 
+<<<<<<< HEAD
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
 
 const categoryII = r => require.ensure([], () => r(require('../pages/category/categoryII')), 'categoryII')
 
 
+=======
+>>>>>>> 5222b758955377ae195db7c8c644d9ad56201dcc
 Vue.use(Router)
 
 export default new Router({
@@ -46,6 +50,10 @@ export default new Router({
     {
       path: '/goodsDetail/:goodsid',
       component:goodsDetail,
+    },
+    {
+      path: '/cart',
+      component:cart,
     },
     {
       path: '/lifestyleDetail',
