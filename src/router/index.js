@@ -10,6 +10,7 @@ const goods = r => require.ensure([], () => r(require('../pages/goods/goods')), 
 
 const goodsDetail = r => require.ensure([], () => r(require('../pages/goods/goodsDetail')), 'goodsDetail')
 const cart = r => require.ensure([], () => r(require('../pages/cart/cart')), 'cart')//购物车
+const order = r => require.ensure([], () => r(require('../pages/order/order')), 'order')//购物车
 const lifestyleDetail = r => require.ensure([], () => r(require('../pages/LifeStyle/lifestyleDetail')), 'lifestyleDetail')
 const newShare = r => require.ensure([], () => r(require('../pages/LifeStyle/newShare')), 'newShare')
 const category = r => require.ensure([], () => r(require('../pages/category/category')), 'category')
@@ -56,6 +57,10 @@ export default new Router({
     {
       path: '/cart',
       component:cart,
+    },
+    {
+      path: '/order',
+      component: order,
     },
     {
       path: '/lifestyleDetail',
