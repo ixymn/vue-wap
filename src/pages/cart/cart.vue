@@ -36,8 +36,8 @@
 			<div class="cart-total-price">Ksh 2,239</div>
 			<div class="cart-btn" @click="popupOrder">Check Out</div>
 		</div>
-		<mt-popup style="width:100%;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-     		
+		<mt-popup style="width:100%;background-color:transparent;"v-model="popupVisible" position="bottom" popup-transition="popup-fade">
+     		<POPUP @closePopupEvent="closePopup"/>
     	</mt-popup>
 	</div>
 </template>
@@ -46,6 +46,7 @@
 import {mapState,mapMutations} from 'vuex'
 import Head from '../../components/common/headerBack.vue';
 import cartGood from '../../components/cart/cartGood.vue'
+import popupOrder from '../../components/cart/orderConfirm.vue'
 
 export default {
 	data:function(){
@@ -56,6 +57,7 @@ export default {
 	components:{
 		"HEADBACK":Head,
 		"GOODITEM":cartGood,
+		"POPUP":popupOrder,
 	},
 	computed:{
 	  	...mapState(['cartList','shopList']),
@@ -63,6 +65,9 @@ export default {
 	methods:{
 		popupOrder:function(){
 			this.popupVisible=true;
+		},
+		closePopup:function(){
+			this.popupVisible=false;
 		}
 	}
 }

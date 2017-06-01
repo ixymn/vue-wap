@@ -36,6 +36,9 @@ export default {
   mounted:function(){
     this.helpList=keHelp.Q;
     this.goodsId=this.$route.params.goodsid;
+    let tabArr=["1","2","3"];
+    if(tabArr.indexOf(this.$route.params.tabindex)>0)
+      this.tabIndex=this.$route.params.tabindex;
   },
   components:{
     "HEADER":Header,

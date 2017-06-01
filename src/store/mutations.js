@@ -22,7 +22,7 @@ export default {
 	[ADD_CART](state,{goodsInfo,storeInfo,pcs}){
 		let storeId=storeInfo.store_id,goodsId=goodsInfo.goods_id;
 		let cart = state.cartList;
-		let store = cart[storeId] = (cart[storeId] || {});
+		let store = cart[storeId] = (cart[storeId] || {}); 
 
 		if(store[goodsId]){
 			store[goodsId]['num']+=pcs;
@@ -44,6 +44,9 @@ export default {
 		//存入localstorage
 		setStore('buyCart',state.cartList);
 		setStore('buyShop',state.shopList);
+	},
+	[FLASH_SALE](state,flash){
+		state.flashSales = flash
 	},
   [FLASH_SALE](state,flash){
     state.flashSales = flash

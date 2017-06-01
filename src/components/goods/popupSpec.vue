@@ -16,9 +16,9 @@
     <div class="popup-spec-item clearfix">
       <div style="display:inline-block;float:left;">PCS.</div>
       <dl style="display:inline-block;float:right;">
-        <dd class="popup-good-pcs" @click="minusPCS">-</dd>
+        <dd class="popup-good-pcs" @click="minusPCS"></dd>
         <dd>{{pcs}}</dd>
-        <dd class="popup-good-pcs" @click="plusPCS">+</dd>
+        <dd class="popup-good-pcs" @click="plusPCS"></dd>
       </dl>
     </div>
     <div class="popup-addcart-btn" @touchstart="addToCart(goodsInfo,storeInfo,pcs)">
@@ -162,7 +162,14 @@
           box-sizing: border-box;
           border-radius: 0.06rem;
           color: #eff0f3;
-          border: 0.03rem solid #eff0f3;
+          
+          background-size: 100%;
+        }
+        dd.popup-good-pcs:nth-child(1){
+          background-image: url(../../assets/images/pcs-minus.png);
+        }
+        dd.popup-good-pcs:last-child{
+          background-image: url(../../assets/images/pcs-plus.png);
         }
       }
       ul{

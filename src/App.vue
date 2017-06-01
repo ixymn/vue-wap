@@ -39,11 +39,18 @@ a{
   /*text-align: center;*/
   color: #2c3e50;
   min-height: 5rem;
+  
 }
 .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;
 }
 .router-fade-enter, .router-fade-leave-active {
     opacity: 0;
+}
+.em-ico{
+  display: inline-block;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 </style>

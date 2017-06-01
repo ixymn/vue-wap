@@ -36,6 +36,9 @@ var getFirstCate = () => fetch('GET',apiUrl+'/index.php?act=goods_class',{});
 //Category二级分类
 var getSecondCate = (gc_id) => fetch('GET',apiUrl+'/index.php?act=goods_class&op=get_child_all&gc_id='+gc_id,{});
 
+//todayDeal
+var getTodayDeal = (data) => fetch('GET',apiUrl+'/index.php?act=promotion&page='+data.page+'&curpage='+data.curpage,{});
+
 export {
 	getIndexData,
   	getFlashData,
@@ -45,4 +48,5 @@ export {
     getLifeStyle,
     getFirstCate,
     getSecondCate,
+    getTodayDeal,
 }

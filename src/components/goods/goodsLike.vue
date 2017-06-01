@@ -44,7 +44,6 @@
         margin-top: 0.28rem;
         font-size: 0.39rem;
         color: #E4C187;
-        height: 0.39rem;
         overflow: hidden;
         white-space: nowrap;
         text-align: center;
