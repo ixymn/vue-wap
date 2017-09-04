@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="theme-color" content="#424040" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script type="text/javascript">
+        /*var  ua=navigator.userAgent || window.navigator.userAgent;
+        if(ua.indexOf('Opera Mini') >0){
+          alert("Please change your browser settings and select High or Off mode");
+        }*/
+    </script>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./mintUiDiy.css" />
+
+    <!-- <link rel="stylesheet" href="./static/addtoHome.css" />
+    <script src="./static/addtoHome.js" charset="utf-8"></script> -->
+
+    <title></title>
+    <style type="text/css">
+      html{
+        min-height: 100%;
+      }
+      body{
+        width: 100%;
+        min-height: 100%;
+        background-color: #f3f5f9;
+      }
+      .clearfix:after{
+        display: block;
+        clear: both;
+        content: "";
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="app" ></div>
+    <!-- built files will be auto injected -->
+    <div class="wap-mask-logo" id="wap-mask-logo">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+
+    <script type="text/javascript">
+    // addToHomescreen();
+    var ua = navigator.userAgent;
+    if(ua.indexOf("kilimall")>1){
+      var loadingLogo = document.getElementById('wap-mask-logo');
+      loadingLogo.className += " android-loading";
+    }
+    if(document.addEventListener){
+      document.addEventListener('DOMContentLoaded',function(){
+      //注销时间，避免反复触发
+      document.removeEventListener('DOMContentLoaded',arguments.callee,false);
+      document.getElementById("wap-mask-logo").style.display='none';
+    })
+    }else if(document.attachEvent){     //IE浏览器
+      document.attachEvent('onreadystatechange',function(){
+        if(document.readyState=='complete'){
+            document.detachEvent('onreadystatechange',arguments.callee);
+            document.getElementById("wap-mask-logo").style.display='none';
+        }
+      });
+    }
+
+    </script>
+    <script src="/memorystorage.min.js" charset="utf-8"></script>
+  </body>
+</html>
